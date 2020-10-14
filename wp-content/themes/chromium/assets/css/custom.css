@@ -1,0 +1,64 @@
+.tinkoff_credit {
+    text-align: right;
+}
+
+.tinkoff_credit_submit {
+    width: 184px;
+    margin-top: 15px;
+}
+
+.cart_totals .tinkoff_credit_submit {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.payment_method_tinkoff img {
+    display: none;
+}
+
+.product .woocommerce-loop-product__link > img {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    object-position: center;
+}
+
+ul.products:not(.grid-view) .product,
+ul.products:not(.grid-view) .product .inner-wrapper {
+    height: 100%;
+}
+
+.berocket_single_filter_widget {
+    background-color: #fff;
+    padding: 1.5em 20px;
+    margin: 0;
+    font-size: 0.933em;
+}
+
+.bapf_sfilter .bapf_body>ul {
+    padding-left: 20px;
+}
+
+
+.widget_tz_categories .current-cat > a {
+    color: #fdb819;
+}
+
+.hgroup-sidebar #dgwt_wcas_ajax_search-1 {
+    margin-right: auto!important;
+}
+
+@media screen and (max-width: 991px) {
+    .hgroup-sidebar #dgwt_wcas_ajax_search-1 {
+        flex-grow: 1;
+        width: calc(100% - 1em);
+        margin-right: 0.5em!important;
+    }
+}
+
+.header-social__icon {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: 5px 0;
+}
