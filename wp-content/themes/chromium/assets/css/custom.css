@@ -62,3 +62,27 @@ ul.products:not(.grid-view) .product .inner-wrapper {
     height: 30px;
     margin: 5px 0;
 }
+
+.dev-by {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.dev-by__label,
+.dev-by__link {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+.dev-by__label {
+    font-size: 13px;
+    margin-right: 15px;
+}
+.dev-by__link img {
+    display: block;
+    max-width: 100%;
+}
+@media (max-width: 767px) {
+    .dev-by {
+        justify-content: center;
+    }
+}
