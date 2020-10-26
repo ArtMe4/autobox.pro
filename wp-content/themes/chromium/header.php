@@ -5,6 +5,7 @@
 	<head>
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="cmsmagazine" content="4be1bfa70b3d4b0b650c5469488496b4" />
 		<link rel="profile" href="https://gmpg.org/xfn/11">
 		<link rel="icon" href="/favicon.png" type="image/x-icon">
 		<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
@@ -60,6 +61,16 @@
                         </div>
                     <?php endif; ?>
                 <?php endif; ?>
+                <!-- Global site tag (gtag.js) - Google Analytics -->
+                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153981354-2"></script>
+                <script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'UA-153981354-2');
+                </script>
+        <meta name="cmsmagazine" content="4be1bfa70b3d4b0b650c5469488496b4" />
 			</header><!-- end of Site's Header -->
 
 			<?php // Breadcrumbs by Yoast

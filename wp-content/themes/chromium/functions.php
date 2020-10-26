@@ -156,8 +156,8 @@ if ( !function_exists('chromium_sidebars_init') ) :
 			'description' => esc_html__( 'Appears on singular blog posts and on Blog Page', 'chromium' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget' => '</section>',
-			'before_title' => '<h3 class="widget-title" itemprop="name"><span>',
-			'after_title' => '</span></h3>',
+			'before_title' => '<div class="like-h3 widget-title" itemprop="name"><span>',
+			'after_title' => '</span></div>',
 		) );
 		register_sidebar( array(
 			'name' => esc_html__( 'Front Page Sidebar', 'chromium' ),
@@ -165,8 +165,8 @@ if ( !function_exists('chromium_sidebars_init') ) :
 			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'chromium' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget' => '</section>',
-			'before_title' => '<h3 class="widget-title" itemprop="name"><span>',
-			'after_title' => '</span></h3>',
+			'before_title' => '<div class="like-h3 widget-title" itemprop="name"><span>',
+			'after_title' => '</span></div>',
 		) );
 		register_sidebar( array(
 			'name' => esc_html__( 'Pages Sidebar', 'chromium' ),
@@ -174,8 +174,8 @@ if ( !function_exists('chromium_sidebars_init') ) :
 			'description' => esc_html__( 'Appears on Pages', 'chromium' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget' => '</section>',
-			'before_title' => '<h3 class="widget-title" itemprop="name"><span>',
-			'after_title' => '</span></h3>',
+			'before_title' => '<div class="like-h3 widget-title" itemprop="name"><span>',
+			'after_title' => '</span></div>',
 		) );
         register_sidebar( array(
             'name' => 'Сайдбар в хедере (возле лого)',
@@ -203,8 +203,8 @@ if ( !function_exists('chromium_sidebars_init') ) :
 				'description' => esc_html__( 'Appears on Products page', 'chromium' ),
 				'before_widget' => '<section id="%1$s" class="widget %2$s">',
 				'after_widget' => '</section>',
-				'before_title' => '<h3 class="widget-title" itemprop="name"><span>',
-				'after_title' => '</span></h3>',
+				'before_title' => '<div class="like-h3 widget-title" itemprop="name"><span>',
+				'after_title' => '</span></div>',
 			) );
 			register_sidebar( array(
 				'name' => esc_html__( 'Single Product Page Sidebar', 'chromium' ),
@@ -212,8 +212,8 @@ if ( !function_exists('chromium_sidebars_init') ) :
 				'description' => esc_html__( 'Appears on Single Products page', 'chromium' ),
 				'before_widget' => '<section id="%1$s" class="widget %2$s">',
 				'after_widget' => '</section>',
-				'before_title' => '<h3 class="widget-title" itemprop="name"><span>',
-				'after_title' => '</span></h3>',
+				'before_title' => '<div class="like-h3 widget-title" itemprop="name"><span>',
+				'after_title' => '</span></div>',
 			) );
 			register_sidebar( array(
 				 'name' => esc_html__( 'Special Filters Sidebar', 'chromium' ),
@@ -221,8 +221,8 @@ if ( !function_exists('chromium_sidebars_init') ) :
 				 'description' => esc_html__( 'Located at the top of the products page', 'chromium' ),
 				 'before_widget' => '<div id="%1$s" class="widget sortby-div %2$s">',
 				 'after_widget' => '</div>',
-				 'before_title' => '<h3 class="dropdown-filters-title">',
-				 'after_title' => '</h3>',
+				 'before_title' => '<div class="like-h3 dropdown-filters-title">',
+				 'after_title' => '</div>',
 			) );
 			if ( true == get_theme_mod( 'add_cart_sidebar', true ) ) {
 				register_sidebar( array(
@@ -231,8 +231,8 @@ if ( !function_exists('chromium_sidebars_init') ) :
 					'description' => esc_html__( 'Appears on Cart page under main table', 'chromium' ),
 					'before_widget' => '<section id="%1$s" class="widget %2$s">',
 					'after_widget' => '</section>',
-					'before_title' => '<h3 class="widget-title" itemprop="name"><span>',
-					'after_title' => '</span></h3>',
+					'before_title' => '<div class="like-h3 widget-title" itemprop="name"><span>',
+					'after_title' => '</span></div>',
 				) );
 			}
 		}
@@ -242,32 +242,32 @@ if ( !function_exists('chromium_sidebars_init') ) :
 	    'id' => 'footer-sidebar-1',
 	    'before_widget' => '<section id="%1$s" class="widget %2$s">',
 	    'after_widget' => '</section>',
-	    'before_title' => '<h3 class="widget-title" itemprop="name">',
-	    'after_title' => '</h3>',
+	    'before_title' => '<div class="like-h3 widget-title" itemprop="name">',
+	    'after_title' => '</div>',
 	  ) );
 		register_sidebar( array(
 	    'name' => esc_html__( 'Footer Sidebar (2 Col)', 'chromium' ),
 	    'id' => 'footer-sidebar-2',
 	    'before_widget' => '<section id="%1$s" class="widget %2$s">',
 	    'after_widget' => '</section>',
-	    'before_title' => '<h3 class="widget-title" itemprop="name">',
-	    'after_title' => '</h3>',
+	    'before_title' => '<div class="like-h3 widget-title" itemprop="name">',
+	    'after_title' => '</div>',
 	  ) );
 		register_sidebar( array(
 			'name' => esc_html__( 'Footer Sidebar (3 Col)', 'chromium' ),
 			'id' => 'footer-sidebar-3',
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget' => '</section>',
-			'before_title' => '<h3 class="widget-title" itemprop="name">',
-			'after_title' => '</h3>',
+			'before_title' => '<div class="like-h3 widget-title" itemprop="name">',
+			'after_title' => '</div>',
 		) );
 		register_sidebar( array(
 			'name' => esc_html__( 'Footer Sidebar (4 Col)', 'chromium' ),
 			'id' => 'footer-sidebar-4',
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget' => '</section>',
-			'before_title' => '<h3 class="widget-title" itemprop="name">',
-			'after_title' => '</h3>',
+			'before_title' => '<div class="like-h3 widget-title" itemprop="name">',
+			'after_title' => '</div>',
 		) );
 		/* Top top_panel_text_color Sidebars */
 		if ( true == get_theme_mod( 'header_top_panel', true ) ) {
@@ -277,8 +277,8 @@ if ( !function_exists('chromium_sidebars_init') ) :
 				'description' => esc_html__( 'Located at the top left corner of the site', 'chromium' ),
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget' => '</div>',
-				'before_title' => '<h3 class="widget-title" itemprop="name">',
-				'after_title' => '</h3>',
+				'before_title' => '<div class="like-h3 widget-title" itemprop="name">',
+				'after_title' => '</div>',
 			) );
 			register_sidebar( array(
 				'name' => esc_html__( 'Header Top Panel Right Sidebar', 'chromium' ),
@@ -286,8 +286,8 @@ if ( !function_exists('chromium_sidebars_init') ) :
 				'description' => esc_html__( 'Located at the top right corner of the site', 'chromium' ),
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget' => '</div>',
-				'before_title' => '<h3 class="widget-title" itemprop="name">',
-				'after_title' => '</h3>',
+				'before_title' => '<div class="like-h3 widget-title" itemprop="name">',
+				'after_title' => '</div>',
 			) );
 		}
 		/* Primary Nav Sidebar */
@@ -308,8 +308,8 @@ if ( !function_exists('chromium_sidebars_init') ) :
             'id' => 'home-page',
             'before_widget' => '<section id="%1$s" class="widget %2$s">',
             'after_widget' => '</section>',
-            'before_title' => '<h3 class="widget-title" itemprop="name">',
-            'after_title' => '</h3>',
+            'before_title' => '<div class="like-h3 widget-title" itemprop="name">',
+            'after_title' => '</div>',
         ) );
 
 	}

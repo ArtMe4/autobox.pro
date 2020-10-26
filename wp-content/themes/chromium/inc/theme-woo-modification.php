@@ -75,7 +75,6 @@ function chromium_store_wrapper_start() { ?>
 
 
 /* Product Listing Modifications */
-
 // Remove default product link
 remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10 );
 remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5 );
@@ -192,6 +191,14 @@ if (!function_exists('chromium_product_buttons_wrapper_end')) {
 	}
 	add_action( 'woocommerce_before_shop_loop_item_title', 'chromium_product_buttons_wrapper_end', 17 );
 }
+// Remove h2 from product loop title
+remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10);
+add_action('woocommerce_shop_loop_item_title', 'change_product_title_tag', 10);
+function change_product_title_tag()
+{
+    echo '<div class="like-h2 ' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</div>';
+}
+
 // Add percentage label to sale products price
 if (!function_exists('chromium_sale_product_percentage_label')) {
 	function chromium_sale_product_percentage_label(){

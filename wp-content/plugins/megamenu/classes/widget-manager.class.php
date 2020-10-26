@@ -829,8 +829,8 @@ class Mega_Menu_Widget_Manager {
         );
 
         $params[0]['id'] = 'mega-menu';
-        $params[0]['before_title'] = apply_filters( "megamenu_before_widget_title", '<h4 class="mega-block-title">', $wp_registered_widgets[$id] );
-        $params[0]['after_title'] = apply_filters( "megamenu_after_widget_title", '</h4>', $wp_registered_widgets[$id] );
+        $params[0]['before_title'] = apply_filters( "megamenu_before_widget_title", '<div class="like-h4 mega-block-title">', $wp_registered_widgets[$id] );
+        $params[0]['after_title'] = apply_filters( "megamenu_after_widget_title", '</div>', $wp_registered_widgets[$id] );
         $params[0]['before_widget'] = apply_filters( "megamenu_before_widget", "", $wp_registered_widgets[$id] );
         $params[0]['after_widget'] = apply_filters( "megamenu_after_widget", "", $wp_registered_widgets[$id] );
         
@@ -976,7 +976,7 @@ class Mega_Menu_Widget_Manager {
         $return .= '            <a class="widget-option widget-action" title="' . esc_attr( __("Edit", "megamenu") ) . '"></a>';
         $return .= '        </div>';
         $return .= '        <div class="widget-title">';
-        $return .= '            <h4>' . esc_html( $title ) . '</h4>';
+        $return .= '            <div class="like-h4">' . esc_html( $title ) . '</div>';
         
         if ( $is_grid_widget ) {
             $return .= '            <span class="widget-desc">' .  esc_html( $title ) . '</span>';
