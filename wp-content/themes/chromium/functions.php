@@ -376,3 +376,18 @@ function product_advantages() {
     </div>';
 }
 add_action('woocommerce_single_product_summary', 'product_advantages', 49);
+
+
+
+function mb_lcfirst($string, $enc = 'UTF-8') {
+    return mb_strtolower(mb_substr($string, 0, 1, $enc), $enc) .
+        mb_substr($string, 1, mb_strlen($string, $enc), $enc);
+}
+
+function get_title_lc() {
+    return mb_lcfirst(get_the_title());
+}
+function register_custom_yoast_variables() {
+    wpseo_register_var_replacement('%%title_lc%%', 'get_title_lc', 'advanced', 'Заголовок с маленькой буквы');
+}
+add_action('wpseo_register_extra_replacements', 'register_custom_yoast_variables');
