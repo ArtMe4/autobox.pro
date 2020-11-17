@@ -3,6 +3,10 @@
 <html <?php language_attributes(); ?>>
 
 	<head>
+        <?php
+        if ($_SERVER['HTTP_HOST'] == 'basszone.tmweb.ru')
+            echo '<meta name="robots" content="noindex" />';
+        ?>
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="cmsmagazine" content="4be1bfa70b3d4b0b650c5469488496b4" />
