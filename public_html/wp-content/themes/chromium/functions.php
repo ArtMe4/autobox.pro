@@ -138,6 +138,7 @@ if ( !function_exists('chromium_scripts') ) :
 		}
 
         wp_enqueue_script('goals', get_template_directory_uri() . '/assets/js/goals.js', [], '1.0', true);
+        wp_enqueue_script('href', get_template_directory_uri() . '/assets/js/href.js', [], '1.0', true);
 
 	}
 endif; /* end of if (!function_exists('chromium_scripts')) */
@@ -203,8 +204,8 @@ if ( !function_exists('chromium_sidebars_init') ) :
 				'description' => esc_html__( 'Appears on Products page', 'chromium' ),
 				'before_widget' => '<section id="%1$s" class="widget %2$s">',
 				'after_widget' => '</section>',
-				'before_title' => '<div class="like-h3 widget-title" itemprop="name"><span>',
-				'after_title' => '</span></div>',
+				'before_title' => '<div class="like-h3 widget-title category__collapse" itemprop="name"><img class="catalog-mobile__icon" src="/wp-content/themes/chromium/assets/img/catalog-mobile-button.png" alt=""><span>',
+				'after_title' => '</span><img class="filter-close-mob" src="/wp-content/themes/chromium/assets/img/close-filter-category.png" alt=""></div>',
 			) );
 			register_sidebar( array(
 				'name' => esc_html__( 'Single Product Page Sidebar', 'chromium' ),
@@ -377,8 +378,6 @@ function product_advantages() {
 }
 add_action('woocommerce_single_product_summary', 'product_advantages', 49);
 
-
-
 function mb_lcfirst($string, $enc = 'UTF-8') {
     return mb_strtolower(mb_substr($string, 0, 1, $enc), $enc) .
         mb_substr($string, 1, mb_strlen($string, $enc), $enc);
@@ -391,3 +390,55 @@ function register_custom_yoast_variables() {
     wpseo_register_var_replacement('%%title_lc%%', 'get_title_lc', 'advanced', 'Заголовок с маленькой буквы');
 }
 add_action('wpseo_register_extra_replacements', 'register_custom_yoast_variables');
+
+//add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
+//add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
+//function some_custom_berocket_aapf_template_full_content($template_content) {
+//    $template_content['template']['content']['header']['content']['title']['tag'] = 'p';
+//    return $template_content;
+//}
+
+//add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_template_full_content', 4000, 3);
+//
+//function some_custom_berocket_aapf_template_full_content($template_content, $terms, $berocket_query_var_title) {
+//    if( $berocket_query_var_title['new_template'] == 'checkbox') {
+//        $template_content['template']['content']['filter']['content'] = berocket_insert_to_array(
+//            $template_content['template']['content']['filter']['content'],
+//            'list',
+//            array(
+//                'custom_content' => '<div><h1>SOME CUSTOM HTML</h1><p>Display there anything after title</p></div>'
+//            ),
+//            true
+//        );
+//    }
+//    return $template_content;
+//}
+
+add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
+add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
+function some_custom_berocket_aapf_template_full_content($template_content) {
+    $template_content['template']['content']['header']['content']['title']['tag'] = 'a';
+    $template_content['template']['content']['header']['content']['title']['attributes'] = array(
+        'href' => 'javascript:void(0);',
+        'class' => 'collapse__filter like-h3',
+    );
+    return $template_content;
+}
+
+
+add_filter('gettext', 'translate_text');
+add_filter('ngettext', 'translate_text');
+
+function translate_text($translated) {
+    $translated = str_ireplace('Подытог', 'Итого', $translated);
+    return $translated;
+}
+
+// canonical для пагинации
+add_filter('wpseo_canonical', 'removeCanonicalArchivePagination');
+
+function removeCanonicalArchivePagination($link) {
+    $link = preg_replace('#\\??/page[\\/=]\\d+#', '', $link);
+    $link = preg_replace('#\\??.tmweb#', '', $link);
+    return $link;
+}
