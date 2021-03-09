@@ -504,3 +504,46 @@ jQuery(document).ready(function($) {
 
     $('.widget_tz_categories .current-cat.cat-parent > .show-children').trigger('click');
 });
+
+jQuery(window).resize(function() {
+    if (jQuery(window).width() > '991') {
+        jQuery('body').on('click', '.category__collapse', function(){
+            jQuery(this).parent().find('.pt-categories').slideToggle();
+            jQuery(this).toggleClass('category__collapsed');
+        });
+    }
+});
+
+jQuery('body').on('click', '.collapse__filter', function(){
+    jQuery(this).parent().parent().find('.collapse__menu').slideToggle();
+    jQuery(this).parent().parent().toggleClass('opened__filter');
+});
+
+jQuery('body').on('click', '.category__button', function(){
+    jQuery('aside .widget_tz_categories').show();
+    jQuery('.bg__filter').show();
+});
+
+jQuery('body').on('click', '.filter__button', function(){
+    jQuery('aside .filters__block').show();
+    jQuery('.bg__filter').show();
+});
+
+jQuery('body').on('click', '.filter-close-mob', function(){
+    jQuery('aside .filters__block').hide();
+    jQuery('aside .widget_tz_categories').hide();
+    jQuery('.bg__filter').hide();
+});
+
+jQuery('.widget_price_filter ,.berocket_single_filter_widget').wrapAll('<div class="filters__block">');
+jQuery("#woocommerce_price_filter-1").before("<div class='filters__title'><img src='/wp-content/themes/chromium/assets/img/filter-icon.png' alt=''>Фильтр<img class='filter-close-mob' src='/wp-content/themes/chromium/assets/img/close-filter-category.png' alt=''></div>");
+
+jQuery(window).resize(function() {
+    if (jQuery(window).width() <= '991'){
+        var removing = jQuery('.woocommerce-result-count');
+        jQuery('.woocommerce-notices-wrapper').append(removing);
+    }
+});
+
+
+
