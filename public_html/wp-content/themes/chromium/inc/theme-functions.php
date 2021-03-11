@@ -228,9 +228,9 @@ endif;
  	function chromium_output_page_title() {
  			// Archives
  			if ( is_archive() ) {
-        echo '<div class="page-title">';
-        echo chromium_chromify_title(get_the_archive_title());
-        echo '</div>';
+        echo '<h1 class="page-title">';
+        echo 'Акции';
+        echo '</h1>';
  			}
  			// 404
  			elseif ( is_404() ) {
