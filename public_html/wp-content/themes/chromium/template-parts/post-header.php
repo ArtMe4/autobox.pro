@@ -12,7 +12,7 @@
 				</h1>
 			<?php } else {
 				echo '<meta itemprop="mainEntityOfPage" content="'.esc_url(get_permalink()).'">';
-				the_title( '<h1 class="entry-title" itemprop="headline"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark" itemprop="url">', '</a></h1>' );
+				the_title( '<div class="entry-title like-h1" itemprop="headline"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark" itemprop="url">', '</a></div>' );
 		} ?>
         <div class="entry-header-meta">
 			<?php
