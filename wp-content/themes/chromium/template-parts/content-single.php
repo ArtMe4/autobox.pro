@@ -1,6 +1,8 @@
 <?php /* The default template for displaying single post content. */ ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope="itemscope" itemtype="https://schema.org/Article"><!-- Article ID-<?php the_ID(); ?> -->
+    <meta itemprop="author" content="BassZone">
+    <meta itemprop="datePublished" content="<?=get_the_date('c');?>">
 
 	<?php /* Post Thumbnail Section */
 	$featured_gallery = get_post_meta( get_the_ID(), 'chromium_post_gallery_ids', false);
@@ -59,10 +61,10 @@
 				// Date
 				if ( function_exists('chromium_entry_publication_time') && (false == get_theme_mod( 'single_hide_date', false )) ) { chromium_entry_publication_time(); }
 				// Author
-//				if ( function_exists('chromium_entry_author') && (false == get_theme_mod( 'single_hide_author', false )) ) { chromium_entry_author(); }
+				//if ( function_exists('chromium_entry_author') && (false == get_theme_mod( 'single_hide_author', false )) ) { chromium_entry_author(); }
 			} else {
 				// Author
-//				if ( function_exists('chromium_entry_author') && (false == get_theme_mod( 'single_hide_author', false )) ) { chromium_entry_author(); }
+				//if ( function_exists('chromium_entry_author') && (false == get_theme_mod( 'single_hide_author', false )) ) { chromium_entry_author_second(); }
 				// Date
 				if ( function_exists('chromium_entry_publication_time') && (false == get_theme_mod( 'single_hide_date', false )) ) { chromium_entry_publication_time(); }
 			}

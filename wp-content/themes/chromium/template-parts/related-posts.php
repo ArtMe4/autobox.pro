@@ -25,7 +25,13 @@
 		    	<h2 class="entry-title related-posts-title" itemprop="name"><?php echo apply_filters( 'chromium-single-post-titles', esc_html__('Related Posts', 'chromium') ); ?></h2>
 					<ul class="post-list">
 					<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
-						<li class="post" itemscope="itemscope" itemtype="https://schema.org/Article">
+						<li class="post" itemscope="itemscope" itemprop="publisher" itemtype="https://schema.org/Article">
+                            <?
+                            //if ( function_exists('chromium_entry_author') && (false == get_theme_mod( 'single_hide_author', false )) ) { chromium_entry_author_second(); }
+                            ?>
+                            <meta itemprop="author" content="BassZone">
+                            <meta itemprop="image" content="<?=wp_get_attachment_image_url( get_post_thumbnail_id(), 'post-thumbnail');?>">
+                            <meta itemprop="dateModified" content="<?=get_the_modified_date('c');?>">
 							<?php if ( has_post_thumbnail() ) { ?>
 								<div class="thumb-wrapper">
 									<?php the_post_thumbnail( 'chromium-recent-posts-thumb-s' ); ?>
@@ -33,7 +39,8 @@
 							<?php } ?>
 							<div class="item-content">
 								<div class="date-cat-wrapper">
-									<?php echo '<span itemprop="datePublished">'.get_the_date().'</span>'; ?>
+                                    <meta itemprop="datePublished" content="<?=get_the_date('c')?>">
+									<?php echo '<span>'.get_the_date().'</span>'; ?>
 									<?php /* Get equal categories */
 									$related_post_categories = get_the_category( get_the_ID() );
 									foreach( $related_post_categories as $individual_post_category ) $related_category_ids[] = $individual_post_category->term_id;
