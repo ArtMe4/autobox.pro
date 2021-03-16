@@ -87,8 +87,8 @@ class BeRocket_AAPF_Template_Builder {
                         'content'       => array(
                             'title'  => array(
                                 'type'          => 'tag',
-                                'tag'           => 'div',
-                                'attributes'    => array('class'=> 'like-h3'),
+                                'tag'           => 'h3',
+                                'attributes'    => array(),
                                 'content'       => array(
                                     'title' => 'Filter Title'
                                 ),

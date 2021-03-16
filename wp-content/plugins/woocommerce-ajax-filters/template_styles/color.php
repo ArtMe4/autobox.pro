@@ -19,11 +19,6 @@ if( ! class_exists('BeRocket_AAPF_Template_Style_color') ) {
         function template_full($template_content, $terms, $berocket_query_var_title) {
             $template_content['template']['attributes']['class']['style_type'] = 'bapf_stylecolor';
             $template_content['template']['attributes']['class']['inline_color'] = 'bapf_colorinline';
-            if( berocket_isset($berocket_query_var_title['color_image_checked']) == 'brchecked_custom' ) {
-                $template_content['template']['attributes']['class']['checked_type'] = 'brchecked_custom_'.$berocket_query_var_title['unique_filter_id'];
-            } else {
-                $template_content['template']['attributes']['class']['checked_type'] = (empty($berocket_query_var_title['color_image_checked']) ? 'brchecked_default' : $berocket_query_var_title['color_image_checked']);
-            }
             return $template_content;
         }
         function template_single_item($template, $term, $i, $berocket_query_var_title) {
@@ -102,11 +97,6 @@ if( ! class_exists('BeRocket_AAPF_Template_Style_image') ) {
         function template_full($template_content, $terms, $berocket_query_var_title) {
             $template_content['template']['attributes']['class']['style_type'] = 'bapf_styleimage';
             $template_content['template']['attributes']['class']['inline_color'] = 'bapf_colorinline';
-            if( berocket_isset($berocket_query_var_title['color_image_checked']) == 'brchecked_custom' ) {
-                $template_content['template']['attributes']['class']['checked_type'] = 'brchecked_custom_'.$berocket_query_var_title['unique_filter_id'];
-            } else {
-                $template_content['template']['attributes']['class']['checked_type'] = (empty($berocket_query_var_title['color_image_checked']) ? 'brchecked_default' : $berocket_query_var_title['color_image_checked']);
-            }
             return $template_content;
         }
         function template_single_item($template, $term, $i, $berocket_query_var_title) {

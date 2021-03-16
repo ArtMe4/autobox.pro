@@ -33,7 +33,7 @@ function berocket_filter_et_builder_ready() {
                 return $fields;
             }
 
-            function render( $atts, $content = null, $function_name ) {
+            function render( $atts, $content = null, $function_name = '' ) {
                 $html = '';
                 if( ! empty($atts['filter_id']) ) {
                     $html .= trim(do_shortcode('[br_filter_single filter_id='.$atts['filter_id'].']'));
@@ -77,7 +77,7 @@ function berocket_filter_et_builder_ready() {
                 return $fields;
             }
 
-            function render( $atts, $content = null, $function_name ) {
+            function render( $atts, $content = null, $function_name = '' ) {
                 $html = '';
                 if( ! empty($atts['group_id']) ) {
                     $html .= trim(do_shortcode('[br_filters_group group_id='.$atts['group_id'].']'));
@@ -103,7 +103,7 @@ function berocket_filter_et_builder_ready() {
                 return $fields;
             }
 
-            function render( $atts, $content = null, $function_name ) {
+            function render( $atts, $content = null, $function_name = '' ) {
                 add_filter('berocket_aapf_wcshortcode_is_filtering', array($this, 'enable_filtering'));
                 return '';
             }

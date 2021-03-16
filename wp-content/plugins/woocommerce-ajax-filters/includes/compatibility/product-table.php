@@ -19,6 +19,7 @@ class BeRocket_AAPF_compat_product_table {
         && ( function_exists( 'Barn2\Plugin\WC_Product_Table\wc_product_table' ) || (function_exists( 'wc_product_table' ) && version_compare(WC_Product_Table_Plugin::VERSION, '2.1.3', '>')) ) ) {
             add_filter('aapf_localize_widget_script', array( __CLASS__, 'aapf_localize_widget_script' ));
             add_action( 'wc_product_table_get_table', array( __CLASS__, 'wc_product_table_get_table' ), 10, 1 );
+            add_action( 'wc_product_table_after_get_table', array( __CLASS__, 'wc_product_table_get_table' ), 10, 1 );
             add_action( 'wp_footer', array( __CLASS__, 'set_scripts' ), 9000 );
             self::not_ajax_functions();
             $wcpt_shortcode_defaults = get_option('wcpt_shortcode_defaults');

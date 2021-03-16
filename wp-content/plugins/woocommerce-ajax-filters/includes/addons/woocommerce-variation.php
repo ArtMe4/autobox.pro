@@ -77,13 +77,15 @@ class BeRocket_AAPF_compat_woocommerce_variation {
         $query = $query['subquery'];
         unset($query['group']);
         $query = self::implode_recursive($query);
+        $query = 'SELECT %1$s.ID as var_id, %1$s.post_parent as ID, IFNULL(variation_post.out_of_stock, 0) as out_of_stock from %1$s LEFT JOIN ('. $query . ') as variation_post ON (%1$s.ID = variation_post.var_id OR %1$s.post_parent = variation_post.ID)
+        WHERE %1$s.post_parent != 0 AND (variation_post.ID IS NULL OR %1$s.ID = variation_post.var_id)';
         $query = str_replace(
             array( '%1$s',          '%2$s',             '%3$s',                     '%4$s',                 '%5$s' ),
             array( $wpdb->posts,    $wpdb->postmeta,    $wpdb->term_relationships,  $current_attributes,    $current_terms ),
             $query
         );
         $query_price['join'] .= ' LEFT JOIN ('.$query.') as variation_check ON bapf_price_post.ID = variation_check.var_id';
-        $query_price['where'] .= ' AND ( bapf_price_post.post_parent = 0 OR ISNULL(variation_check.out_of_stock) OR variation_check.out_of_stock != 1)';
+        $query_price['where'] .= ' AND ( bapf_price_post.post_parent = 0 OR variation_check.out_of_stock != 1)';
         
         return $query_price;
     }

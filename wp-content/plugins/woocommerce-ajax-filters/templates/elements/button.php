@@ -15,7 +15,7 @@ $template_content['template']['content']['filter']['content']['button'] = array(
         )
     ),
     'content'       => array(
-        $title
+        berocket_isset($title)
     )
 );
 $template_content = apply_filters('BeRocket_AAPF_template_full_element_content', $template_content, $berocket_query_var_title);

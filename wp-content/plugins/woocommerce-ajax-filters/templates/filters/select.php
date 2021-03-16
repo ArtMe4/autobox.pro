@@ -19,7 +19,7 @@ $template_content['template']['attributes']['id']                               
 $template_content['template']['attributes']['class']['filter_type']                         = 'bapf_slct';
 //Set data for filter links
 $template_content['template']['attributes']['data-op']                                      = $operator;
-$template_content['template']['attributes']['data-taxonomy']                                = $term->taxonomy;
+$template_content['template']['attributes']['data-taxonomy']                                = ( berocket_isset($term, 'wpml_taxonomy') ? $term->wpml_taxonomy : $term->taxonomy );
 //Set name for selected filters area and other siilar place
 $template_content['template']['attributes']['data-name']                                    = $title;
 //Set widget title
@@ -39,7 +39,6 @@ $terms_content['element_any'] = array(
     'attributes'    => array(
         'data-name'     => '',
         'id'            => $element_unique,
-        'type'          => 'checkbox',
         'value'         => ''
     ),
     'content'       => array(
@@ -54,7 +53,6 @@ foreach( $terms as $i => $term ) {
         'attributes'    => array(
             'data-name'     => $term->name,
             'id'            => $element_unique,
-            'type'          => 'checkbox',
             'value'         => $term->value
         ),
         'content'       => array(

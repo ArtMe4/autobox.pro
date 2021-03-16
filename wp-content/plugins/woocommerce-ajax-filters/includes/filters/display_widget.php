@@ -362,6 +362,8 @@ class BeRocket_AAPF_Widget {
 
         if( ! empty($widget_type) && $custom_type_html = apply_filters('berocket_aapf_display_filter_custom_type', '', $widget_type, array('options' => $instance, 'args' => $args, 'set_query_var_title' => $set_query_var_title)) ) {
             if( $custom_type_html !== TRUE ) {
+                BeRocket_AAPF::wp_enqueue_script( 'berocket_aapf_widget-script' );
+                BeRocket_AAPF::wp_enqueue_style ( 'berocket_aapf_widget-style' );
                 echo $custom_type_html;
             }
             $widget_error_log['return'] = $widget_type;
@@ -371,6 +373,7 @@ class BeRocket_AAPF_Widget {
 
         $woocommerce_hide_out_of_stock_items = BeRocket_AAPF_Widget_functions::woocommerce_hide_out_of_stock_items();
         if( $woocommerce_hide_out_of_stock_items == 'yes' && $filter_type == 'attribute' && $attribute == '_stock_status' ) {
+            braapf_is_filters_displayed_debug($instance['filter_id'], 'filter', 'option_restriction', 'Disabled by WooCommerce option "Hide out of stock items from the catalog"');
             $widget_error_log['return'] = 'stock_status';
             $this->filter_return($br_wc_query, $wp_the_query, $wp_query, $wc_query, $old_the_query, $old_query, $widget_error_log);
             return true;
@@ -398,6 +401,13 @@ class BeRocket_AAPF_Widget {
             if ( $filter_type == 'attribute' && $attribute == 'price' && $type == 'slider' ) {
                 if ( ! empty($price_values) ) {
                     $price_range = explode( ",", $price_values );
+                    if( is_array($price_range) && count($price_range) ) {
+                        foreach($price_range as &$price_range_value) {
+                            $price_range_value = floatval(trim($price_range_value));
+                        }
+                        sort($price_range, SORT_NUMERIC);
+                        $price_values = implode(',', $price_range);
+                    }
                 } elseif( (! empty($min_price) || $min_price == '0') && ! empty($max_price) ) {
                     $price_range = array($min_price, $max_price);
                 } else {
@@ -537,6 +547,7 @@ class BeRocket_AAPF_Widget {
         $set_query_var_title['x']                           = time();
         $set_query_var_title['filter_type']                 = $filter_type;
         $set_query_var_title['show_product_count_per_attr'] = ! empty($show_product_count_per_attr);
+        $set_query_var_title['product_count_per_attr_style']= berocket_isset($product_count_per_attr_style);
         $set_query_var_title['hide_child_attributes']       = berocket_isset($hide_child_attributes);
         $set_query_var_title['cat_value_limit']             = ( isset($cat_value_limit) ? $cat_value_limit : null );
         $set_query_var_title['select_first_element_text']   = ( empty($select_first_element_text) ? __('Any', 'BeRocket_AJAX_domain') : $select_first_element_text );

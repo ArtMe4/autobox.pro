@@ -44,6 +44,13 @@ class BeRocket_AAPF_Widget_functions {
             );
             if ( ! empty($price_values) ) {
                 $price_range = explode( ",", $price_values );
+                if( is_array($price_range) && count($price_range) ) {
+                    foreach($price_range as &$price_range_value) {
+                        $price_range_value = floatval(trim($price_range_value));
+                    }
+                    sort($price_range, SORT_NUMERIC);
+                    $price_values = implode(',', $price_range);
+                }
             } elseif( (! empty($min_price) || $min_price == '0') && ! empty($max_price) ) {
                 $price_range = array($min_price, $max_price);
             } else {
@@ -71,7 +78,7 @@ class BeRocket_AAPF_Widget_functions {
                     );
                 }
                 $set_query_var_title['terms'] = $terms;
-                $set_query_var_title['slider_display_data'] = 'arr_attr';
+                $set_query_var_title['slider_display_data'] = 'arr_attr_price';
             } else {
                 if( $price_range ) {
                     foreach ( $price_range as $price ) {
@@ -696,7 +703,7 @@ class BeRocket_AAPF_Widget_functions {
                         'operator' => 'IN',
                     )
                 );
-                $tax_query  = new WP_Tax_Query( $tax_query );
+                $tax_query  = new WP_Tax_Query( ( empty($tax_query) || ! is_array($tax_query) ? array() : $tax_query ) );
                 $tax_query_sql  = $tax_query->get_sql( $wpdb->posts, 'ID' );
                 if( ! empty($tax_query_sql['where']) ) {
                     $query[ 'where' ] .= $tax_query_sql['where'];
@@ -1160,7 +1167,7 @@ class BeRocket_AAPF_Widget_functions {
                 }
             }
             $meta_query      = new WP_Meta_Query( $meta_query );
-            $tax_query       = new WP_Tax_Query( $tax_query );
+            $tax_query       = new WP_Tax_Query( ( empty($tax_query) || ! is_array($tax_query) ? array() : $tax_query ) );
             $meta_query_sql  = $meta_query->get_sql( 'post', $wpdb->posts, 'ID' );
             $tax_query_sql   = $tax_query->get_sql( $wpdb->posts, 'ID' );
 

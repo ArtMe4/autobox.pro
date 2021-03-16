@@ -47,6 +47,7 @@ class BeRocket_AAPF_get_terms {
             'meta_query_limit'      => array(),
             'depth'                 => 0,
             'operator'              => 'OR',
+            'recount_tax_query'     => false,
             'additional_tax_query'  => false,
             'disable_recount'       => false,
             'disable_hide_empty'    => false,
@@ -121,7 +122,7 @@ class BeRocket_AAPF_get_terms {
             if( ! isset($terms_parent[$parent]) ) {
                 $terms_parent[$parent] = array();
             }
-            if( $parent == 0 ) {
+            if( $parent == 0 || $parent == berocket_isset($args['child_of']) || ! array_key_exists($parent, $sorts) ) {
                 $terms_sorted[$term_id] = $parent;
             } else {
                 $terms_parent[$parent][$term_id] = $parent;
@@ -188,7 +189,7 @@ class BeRocket_AAPF_get_terms {
         if( ! isset(self::$prepared_data['wc_query_data']) ) {
             self::$prepared_data['wc_query_data'] = array();
         }
-        if( $additional['force_query'] || ! isset(self::$prepared_data['wc_query_data']['post__in']) || ! isset(self::$prepared_data['wc_query_data']['post__not_in']) ) {
+        if( ! empty($additional['force_query']) || ! isset(self::$prepared_data['wc_query_data']['post__in']) || ! isset(self::$prepared_data['wc_query_data']['post__not_in']) ) {
             global $wp_query, $br_wc_query, $br_aapf_wc_footer_widget;
 
             $post__in = ( isset($wp_query->query_vars['post__in']) ? $wp_query->query_vars['post__in'] : array() );
@@ -225,6 +226,7 @@ class BeRocket_AAPF_get_terms {
             'taxonomy'              => $args['taxonomy'],
             'operator'              => $additional['operator'],
             'use_filters'           => FALSE,
+            'tax_query'             => $additional['recount_tax_query'],
             'post__not_in'          => $post__not_in,
             'post__in'              => $post__in,
             'additional_tax_query'  => $additional['additional_tax_query']
@@ -251,6 +253,7 @@ class BeRocket_AAPF_get_terms {
             'taxonomy'              => $args['taxonomy'],
             'operator'              => $additional['operator'],
             'use_filters'           => TRUE,
+            'tax_query'             => $additional['recount_tax_query'],
             'post__not_in'          => $post__not_in,
             'post__in'              => $post__in,
             'additional_tax_query'  => $additional['additional_tax_query']
@@ -306,9 +309,10 @@ class BeRocket_AAPF_get_terms {
     public static function get_md5_taxonomy($taxonomy) {
         if( ! isset(self::$md5_taxonomies[$taxonomy]) ) {
             global $wpdb;
+			$wpdb->query("SET SESSION group_concat_max_len = 1000000");
             $newmd5 = $wpdb->get_var(
                 $wpdb->prepare(
-                    "SELECT MD5(GROUP_CONCAT(CONCAT(t.slug, t.term_id, tt.parent, tt.count))) FROM {$wpdb->terms} AS t 
+                    "SELECT MD5(GROUP_CONCAT(t.slug+t.term_id+tt.parent+tt.count)) FROM {$wpdb->terms} AS t 
                     INNER JOIN {$wpdb->term_taxonomy} AS tt ON t.term_id = tt.term_id 
                     WHERE tt.taxonomy IN (%s)",
                     $taxonomy

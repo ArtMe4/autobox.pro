@@ -1,4 +1,4 @@
-<h3 class="berocket_filter_groups">
+<div class="berocket_filter_groups">
     <table>
         <tr>
             <th><?php _e('Custom CSS class', 'BeRocket_AJAX_domain'); ?></th>

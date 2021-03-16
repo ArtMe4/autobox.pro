@@ -94,7 +94,7 @@ class BeRocket_AAPF_faster_attribute_recount {
         }
 
         $taxonomy_data['meta_query_ready']  = $meta_query           = new WP_Meta_Query( $meta_query );
-        $taxonomy_data['tax_query_ready']   = $tax_query            = new WP_Tax_Query( $tax_query );
+        $taxonomy_data['tax_query_ready']   = $tax_query            = new WP_Tax_Query( ( empty($tax_query) || ! is_array($tax_query) ? array() : $tax_query ) );
         $taxonomy_data['meta_query_sql']    = $meta_query_sql       = $meta_query->get_sql( 'post', $wpdb->posts, 'ID' );
         $taxonomy_data['tax_query_sql']     = $tax_query_sql        = $tax_query->get_sql( $wpdb->posts, 'ID' );
         $taxonomy_data['term_taxonomy_ids'] = $term_taxonomy_ids    = wp_list_pluck($terms, 'term_taxonomy_id', 'term_id');
