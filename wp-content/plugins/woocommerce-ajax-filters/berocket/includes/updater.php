@@ -223,7 +223,7 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
             }
 
             $not_activated_notices = array();
-            foreach ( self::$plugin_info as $plugin ) {
+            /*foreach ( self::$plugin_info as $plugin ) {
                 if ( empty( $active_plugin[ $plugin[ 'id' ] ] ) && empty( $active_site_plugin[ $plugin[ 'id' ] ] ) ) {
                     $version_capability = br_get_value_from_array($plugin, array('version_capability'), 15);
                     if ( $version_capability > 5 && ! in_array($version_capability, array(15, 3, 17)) ) {
@@ -255,7 +255,7 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
                         );
                     }
                 }
-            }
+            }*/
 
             $notices = array_merge( $notices, $not_activated_notices );
 
