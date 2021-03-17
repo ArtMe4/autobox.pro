@@ -28,22 +28,6 @@ ul.products:not(.grid-view) .product .inner-wrapper {
     height: 100%;
 }
 
-.berocket_single_filter_widget {
-    background-color: #fff;
-    padding: 1.5em 20px;
-    margin: 0;
-    font-size: 0.933em;
-}
-
-.bapf_sfilter .bapf_body>ul {
-    padding-left: 20px;
-}
-
-
-.widget_tz_categories .current-cat > a {
-    color: #fdb819;
-}
-
 .hgroup-sidebar #dgwt_wcas_ajax_search-1 {
     margin-right: auto!important;
 }

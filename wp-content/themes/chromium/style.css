@@ -1229,11 +1229,15 @@ p + .page-links{
   aside .filters__block,
   aside .widget_tz_categories {
     display: none;
-    position: absolute;
-    top: 0;
-    z-index: 9999;
-    left: 0;
     width: 40%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow: auto;
+    z-index: 9999;
+    background-color: #fff;
   }
   .site-sidebar.style-2 .widget.widget_tz_categories,
   .site-sidebar.style-3 .widget.widget_tz_categories {
@@ -6826,23 +6830,16 @@ button::-moz-focus-inner {
 }
 
 .chromium-look-tires .hgroup-sidebar .widget_tz_search .tz-searchform{
-
   visibility: hidden;
-
   width: 100vw;
   height: 100vh;
-
   background-color: rgba(0,0,0, 0.8);
-
   position: absolute;
   top: 0;
   left: 0;
-
   z-index: -10;
   opacity: 0;
-
   transition: visibility 0.5s step-end, z-index 0.5s step-end, opacity 0.5s ease;
-
 }
 
 .chromium-look-tires .hgroup-sidebar .widget_tz_search.opened .tz-searchform{
@@ -7098,11 +7095,14 @@ button::-moz-focus-inner {
   padding-bottom: 0;
 }
 
-aside .berocket_single_filter_widget {
+.berocket_single_filter_widget {
   border-top: 1px solid #F1F1F1;
+  background-color: #fff;
+  margin: 0;
+  font-size: 0.933em;
 }
 
-aside .berocket_single_filter_widget:last-of-type {
+.berocket_single_filter_widget:last-of-type {
   border-bottom: 1px solid #F1F1F1;
 }
 
@@ -7137,8 +7137,12 @@ aside .berocket_single_filter_widget:last-of-type {
   content: url("assets/img/arrow-filter-up.png");
 }
 
-.collapse__menu {
+.collapse__menu,
+.bapf_slidr_all {
   padding: 5px 20px 15px;
+}
+
+.collapse__menu {
   display: none;
 }
 
@@ -7166,7 +7170,7 @@ aside .berocket_single_filter_widget:last-of-type {
 }
 
 .bapf_ckbox_square input[type=checkbox]:checked {
-  background: #FD9419;
+  background-color: #FD9419;
   background-image: url("assets/img/filter-check.png");
   background-position: center;
   background-size: auto;
@@ -7180,13 +7184,12 @@ aside .berocket_single_filter_widget:last-of-type {
   font-size: 14px;
   line-height: 20px;
   color: #000000;
+  padding: 0;
 }
 
 .bapf_sfilter ul li {
   margin-bottom: 12px!important;
 }
-
-
 
 .site-sidebar a:focus,
 .site-sidebar a:active {
@@ -7200,6 +7203,23 @@ aside .berocket_single_filter_widget:last-of-type {
 
 .site-sidebar .opened__filter .collapse__filter {
   color: #FD9419!important;
+}
+
+.bapf_sfilter .bapf_button {
+  width: calc(100% - 40px);
+  margin: 30px 20px;
+  background-color: #000;
+  color: #ffffff;
+  transition: opacity .4s ease;
+}
+
+.bapf_slidr_main.ui-widget-content .ui-slider-range,
+.berocket_filter_price_slider.ui-widget-content .ui-slider-range {
+  background-color: #fdb819;
+}
+
+.bapf_sfilter .bapf_button:hover {
+  opacity: .85;
 }
 
 /*New categories*/
@@ -7352,6 +7372,10 @@ aside .berocket_single_filter_widget:last-of-type {
   font-size: 14px;
   line-height: 20px;
   color: #000000;
+}
+
+.site-sidebar .cat-item.current-cat > a {
+  color: #fdb819;
 }
 
 .category__collapse {
