@@ -515,9 +515,13 @@ jQuery(window).resize(function() {
 });
 
 jQuery('body').on('click', '.collapse__filter', function(){
-    jQuery(this).parent().parent().find('.collapse__menu').slideToggle();
+    // jQuery(this).parent().parent().find('.collapse__menu').slideToggle();
     jQuery(this).parent().parent().toggleClass('opened__filter');
 });
+
+// jQuery('body').on('click', '.collapse__menu li', function(){
+//     jQuery('.collapse__menu li.checked').parent().show();
+// });
 
 jQuery('body').on('click', '.category__button', function(){
     jQuery('aside .widget_tz_categories').show();
@@ -533,6 +537,32 @@ jQuery('body').on('click', '.filter-close-mob', function(){
     jQuery('aside .filters__block').hide();
     jQuery('aside .widget_tz_categories').hide();
     jQuery('.bg__filter').hide();
+});
+
+jQuery(window).resize(function() {
+    if (jQuery(window).width() <= '991') {
+        jQuery(document).mouseup(function (e) {
+            var container = jQuery("aside .filters__block");
+            var bg = jQuery('.bg__filter');
+            if (container.has(e.target).length === 0){
+                bg.hide();
+                container.hide();
+            }
+        });
+    }
+});
+
+jQuery(window).resize(function() {
+    if (jQuery(window).width() <= '991') {
+        jQuery(document).mouseup(function (e) {
+            var container = jQuery("aside .widget_tz_categories");
+            var bg = jQuery('.bg__filter');
+            if (container.has(e.target).length === 0){
+                bg.hide();
+                container.hide();
+            }
+        });
+    }
 });
 
 jQuery('.widget_price_filter ,.berocket_single_filter_widget').wrapAll('<div class="filters__block">');
