@@ -184,6 +184,7 @@ if ( 'style-1' == get_theme_mod( 'store_product_style', 'style-3') ) {
 	remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
 	add_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_add_to_cart', 16);
 }
+add_filter( 'woocommerce_after_shop_loop_item', 'awooc_html_custom_add_to_cart', 11 );
 // Close button wrapper
 if (!function_exists('chromium_product_buttons_wrapper_end')) {
 	function chromium_product_buttons_wrapper_end() {
