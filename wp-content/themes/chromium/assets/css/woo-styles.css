@@ -3626,10 +3626,10 @@ h2.woocommerce-Reviews-title, #review_form .comment-reply-title {
 }
 
 .shop_table.cart td {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  /*display: flex;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
+  /*flex-wrap: wrap;*/
 }
 
 @media screen and (min-width: 1024px) and (-ms-high-contrast:none) {
@@ -3696,7 +3696,9 @@ td.product-remove a {
   width: 18px;
   height: 18px;
   line-height: 16px;
-  display: inline-block;
+  /*display: inline-block;*/
+    display: block;
+    margin: auto;
   text-align: center;
   border-style: solid;
   border-width: 1px;
@@ -5051,7 +5053,7 @@ td.product_avalibility_tab span.notavilable{
   text-indent: unset;
   background: #FDB819;
   border-radius: 3px;
-  padding: 10px 45px;
+  padding: 10px 15px;
 }
 
 li.product .excerpt-wrapper .button {
@@ -5082,4 +5084,18 @@ li.product .excerpt-wrapper .button {
   line-height: 22px;
   color: #000000;
   background: #FFFFFF;
+  max-width: 100%;
+    padding: 10px;
+}
+
+@media (max-width: 370px) {
+    .woocommerce table.cart td.actions .coupon .input-text,
+    .woocommerce-page table.cart td.actions .coupon .input-text,
+    .woocommerce-page table.cart td.actions .coupon input {
+        width: 100%;
+    }
+    .woocommerce table.cart td.actions .coupon .button {
+        width: 100%;
+        margin-top: 5px;
+    }
 }

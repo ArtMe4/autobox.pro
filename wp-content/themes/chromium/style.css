@@ -1427,8 +1427,31 @@ p + .page-links{
   width: 1600px;
 }
 
+@media screen and (min-width: 991px) and (max-width: 1199px) {
+    .layout-two-col-right.site-boxed .site-content, .layout-two-col-left.site-boxed .site-content {
+        max-width: 750px;
+    }
+    .site-sidebar {
+        max-width: 250px;
+    }
+    ul.products {
+        grid-row-gap: 1em;
+        grid-column-gap: 1em;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1190px) {
+    #mega-menu-wrap-primary-nav #mega-menu-primary-nav > li.mega-menu-megamenu > ul.mega-sub-menu {
+        width: 700px;
+    }
+    .elementor-tabs-wrapper {
+        width: 27%!important;
+    }
+}
+
 @supports (grid-area: auto) {
-  @media screen and (min-width: 768px) {
+  @media (min-width: 768px){
+
     .site-boxed .site,
     .site-fullwidth .site {
         display: grid;

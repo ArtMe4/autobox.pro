@@ -2,8 +2,12 @@
     text-align: right;
 }
 
-.tinkoff_credit_submit {
+.cart-collaterals .tinkoff_credit_submit {
     width: 184px;
+}
+
+.tinkoff_credit_submit {
+    width: 100%;
     margin-top: 15px;
 }
 
