@@ -7166,7 +7166,7 @@ button::-moz-focus-inner {
 }
 
 .collapse__menu {
-  display: none;
+  /*display: none;*/
 }
 
 .bapf_show_hide {
