@@ -98,16 +98,16 @@ class tz_woo_cart extends WP_Widget {
 		}
 
 		echo '<div class="heading">';
-		if ($title && $title!='') {
-			echo '<div class="widget-heading">' . esc_attr($title);
-		}
+//		if ($title && $title!='') {
+//			echo '<div class="widget-heading">' . esc_attr($title);
+//		}
 
 		if ( isset( WC()->cart) ) :
 
-		echo '<span class="subtotal">' . WC()->cart->get_cart_subtotal() . '</span>';
-		if ($title && $title!='') {
-			echo '</div>';
-		}
+//		echo '<span class="subtotal">' . WC()->cart->get_cart_subtotal() . '</span>';
+//		if ($title && $title!='') {
+//			echo '</div>';
+//		}
 		echo '<span class="cart-count-wrapper">' . WC()->cart->get_cart_contents_count() . '</span>';
 		echo '</div>';
 

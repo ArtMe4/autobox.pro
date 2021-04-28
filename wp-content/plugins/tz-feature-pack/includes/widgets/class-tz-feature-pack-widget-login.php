@@ -51,39 +51,86 @@ class tz_login_register extends WP_Widget {
  		if ( is_user_logged_in() ) {
 		$current_user = wp_get_current_user(); ?>
 
-			<div class="tz-login-heading<?php echo esc_attr($inline_class); ?>">
-				<?php if ( class_exists('WooCommerce') ) { ?>
-					<a class="my-account" href="<?php echo esc_url( get_permalink( get_option('woocommerce_myaccount_page_id') ) ); ?>" title="<?php esc_html_e('My Account','tz-feature-pack'); ?>"><?php esc_html_e('My Account','tz-feature-pack'); ?></a>
-				<?php }; ?>
-				<span class="logged-in-as">
-					<?php printf( esc_html__( "Hello ", 'tz-feature-pack' ) . '<strong>%1$s</strong>.', esc_attr($current_user->display_name)); ?>
-				</span>
-				<a class="log-out" href="<?php echo wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) ); ?>" title="<?php esc_html_e('Log out of this account', 'tz-feature-pack');?>"><?php esc_html_e('Log out', 'tz-feature-pack');?></a>
-			</div>
+
+                <div class="header__top-second">
+                    <div class="login__drop">
+                        <div class="login__drop-link">
+                            Личный кабинет
+                            <img src="/wp-content/themes/chromium/assets/img/personal.svg" alt="">
+                            <div class="drop-link__dropped">
+                                <?php if ( class_exists('WooCommerce') ) { ?>
+                                    <a class="my-account" href="<?php echo esc_url( get_permalink( get_option('woocommerce_myaccount_page_id') ) ); ?>" title="<?php esc_html_e('My Account','tz-feature-pack'); ?>"><?php esc_html_e('My Account','tz-feature-pack'); ?></a>
+                                <?php } ?>
+                                <a class="log-out" href="<?php echo wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) ); ?>" title="<?php esc_html_e('Log out of this account', 'tz-feature-pack');?>"><?php esc_html_e('Log out', 'tz-feature-pack');?></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="second__wishlist">
+                        <a href="/wishlist/"><img src="/wp-content/themes/chromium/assets/img/like.svg" alt=""></a>
+                    </div>
+                    <div class="second__compare">
+                        <a href="/compare/"><img src="/wp-content/themes/chromium/assets/img/analitycs.svg" alt=""></a>
+                    </div>
+                </div>
+
+
+
+<!--			<div class="tz-login-heading--><?php //echo esc_attr($inline_class); ?><!--">-->
+<!--				--><?php //if ( class_exists('WooCommerce') ) { ?>
+<!--					<a class="my-account" href="--><?php //echo esc_url( get_permalink( get_option('woocommerce_myaccount_page_id') ) ); ?><!--" title="--><?php //esc_html_e('My Account','tz-feature-pack'); ?><!--">--><?php //esc_html_e('My Account','tz-feature-pack'); ?><!--</a>-->
+<!--				--><?php //}; ?>
+<!--				<span class="logged-in-as">-->
+<!--					--><?php //printf( esc_html__( "Hello ", 'tz-feature-pack' ) . '<strong>%1$s</strong>.', esc_attr($current_user->display_name)); ?>
+<!--				</span>-->
+<!--				<a class="log-out" href="--><?php //echo wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) ); ?><!--" title="--><?php //esc_html_e('Log out of this account', 'tz-feature-pack');?><!--">--><?php //esc_html_e('Log out', 'tz-feature-pack');?><!--</a>-->
+<!--			</div>-->
 
 		<?php } else { ?>
 
-			<div class="tz-login-heading clickable<?php echo esc_attr($inline_class); ?>">
-				<?php if ($inline) { ?>
-                    <i class="user-icon"></i>
-					<p class="logged-in-as">
-                        <span>
-						<?php
-						    esc_html_e( 'Hello.', 'tz-feature-pack' );
-                        ?>
-                        </span>
-					</p>
-                    <span class="tz-login-actions">
-					    <a class="login-button" id="show_login_form" href="#"><?php esc_html_e('Sign In', 'tz-feature-pack'); ?></a><span class="delimiter">|</span>
-					    <a class="login-button" id="show_register_form" href="#"><?php esc_html_e('Register', 'tz-feature-pack'); ?></a>
-                    </span>
-                    <?php } else { ?>
-					<p class="my-account"><?php esc_html_e('My Account','tz-feature-pack'); ?></p>
-					<p class="logged-in-as">
-						<?php esc_html_e( 'Hello. Sign In', 'tz-feature-pack' ); ?>
-					</p>
-				<?php }; ?>
-			</div>
+
+                        <div class="header__top-second">
+                            <div class="login__drop">
+                                <div class="login__drop-link">
+                                    Личный кабинет
+                                    <img src="/wp-content/themes/chromium/assets/img/personal.svg" alt="">
+                                    <div class="drop-link__dropped">
+                                        <a class="login-button" id="show_login_form" href="#"><?php esc_html_e('Sign In', 'tz-feature-pack'); ?></a>
+                                        <a class="login-button" id="show_register_form" href="#"><?php esc_html_e('Register', 'tz-feature-pack'); ?></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="second__wishlist">
+                                <a href="/wishlist/"><img src="/wp-content/themes/chromium/assets/img/like.svg" alt=""></a>
+                            </div>
+                            <div class="second__compare">
+                                <a href="/compare/"><img src="/wp-content/themes/chromium/assets/img/analitycs.svg" alt=""></a>
+                            </div>
+                        </div>
+
+
+<!--			<div class="tz-login-heading clickable--><?php //echo esc_attr($inline_class); ?><!--">-->
+<!--				--><?php //if ($inline) { ?>
+<!---->
+<!---->
+<!--                    <i class="user-icon"></i>-->
+<!--					<p class="logged-in-as">-->
+<!--                        <span>-->
+<!--						--><?php
+//						    esc_html_e( 'Hello.', 'tz-feature-pack' );
+//                        ?>
+<!--                        </span>-->
+<!--					</p>-->
+<!--                    <span class="tz-login-actions">-->
+<!--					    <a class="login-button" id="show_login_form" href="#">--><?php //esc_html_e('Sign In', 'tz-feature-pack'); ?><!--</a><span class="delimiter">|</span>-->
+<!--					    <a class="login-button" id="show_register_form" href="#">--><?php //esc_html_e('Register', 'tz-feature-pack'); ?><!--</a>-->
+<!--                    </span>-->
+<!--                    --><?php //} else { ?>
+<!--					<p class="my-account">--><?php //esc_html_e('My Account','tz-feature-pack'); ?><!--</p>-->
+<!--					<p class="logged-in-as">-->
+<!--						--><?php //esc_html_e( 'Hello. Sign In', 'tz-feature-pack' ); ?>
+<!--					</p>-->
+<!--				--><?php //}; ?>
+<!--			</div>-->
 
 		<?php } ?>
 

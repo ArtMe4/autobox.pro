@@ -52,29 +52,29 @@
                         get_template_part( 'template-parts/logo-group' );
                     ?>
 
-                    <?php if (has_nav_menu( 'primary-nav' )) :
-                        $nav_class = '';
-                        if ( true == get_theme_mod('primary_nav_widgets', false) && (is_active_sidebar('primary-nav-widgets')) ) {
-                            $nav_class = ' with-widgets';
-                            if ( 'left' == get_theme_mod('primary_nav_widgets_position', 'right') ) {
-                                $nav_class .= ' reversed';
-                            }
-                        } ?>
-                        <nav id="site-navigation" class="main-navigation primary-nav<?php echo esc_attr($nav_class); ?>" itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement" role="navigation"><!-- Primary nav -->
-                            <a class="screen-reader-text skip-link" href="#content"><?php esc_html_e( 'Skip to content', 'chromium' ); ?></a>
-                            <?php if ( true == get_theme_mod('primary_nav_widgets', false) && (is_active_sidebar('primary-nav-widgets')) ) { echo '<div class="primary-nav-wrapper">'; } ?>
-                            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'chromium' ); ?></button>
-                            <?php
-                            wp_nav_menu( array('theme_location'  => 'primary-nav') );
-                            ?>
-                            <?php if ( true == get_theme_mod('primary_nav_widgets', false) && (is_active_sidebar('primary-nav-widgets')) ) { ?>
-                                <aside id="sidebar-nav" class="widget-area nav-sidebar" role="complementary">
-                                    <?php dynamic_sidebar( 'primary-nav-widgets' ); ?>
-                                </aside>
-                            <?php } ?>
-                            <?php if ( true == get_theme_mod('primary_nav_widgets', false) && (is_active_sidebar('primary-nav-widgets')) ) { echo '</div>'; } ?>
-                        </nav><!-- end of Primary nav -->
-                    <?php endif; ?>
+<!--                    --><?php //if (has_nav_menu( 'primary-nav' )) :
+//                        $nav_class = '';
+//                        if ( true == get_theme_mod('primary_nav_widgets', false) && (is_active_sidebar('primary-nav-widgets')) ) {
+//                            $nav_class = ' with-widgets';
+//                            if ( 'left' == get_theme_mod('primary_nav_widgets_position', 'right') ) {
+//                                $nav_class .= ' reversed';
+//                            }
+//                        } ?>
+<!--                        <nav id="site-navigation" class="main-navigation primary-nav--><?php //echo esc_attr($nav_class); ?><!--" itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement" role="navigation"> Primary nav -->
+<!--                            <a class="screen-reader-text skip-link" href="#content">--><?php //esc_html_e( 'Skip to content', 'chromium' ); ?><!--</a>-->
+<!--                            --><?php //if ( true == get_theme_mod('primary_nav_widgets', false) && (is_active_sidebar('primary-nav-widgets')) ) { echo '<div class="primary-nav-wrapper">'; } ?>
+<!--                            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">--><?php //esc_html_e( 'Menu', 'chromium' ); ?><!--</button>-->
+<!--                            --><?php
+//                            wp_nav_menu( array('theme_location'  => 'primary-nav') );
+//                            ?>
+<!--                            --><?php //if ( true == get_theme_mod('primary_nav_widgets', false) && (is_active_sidebar('primary-nav-widgets')) ) { ?>
+<!--                                <aside id="sidebar-nav" class="widget-area nav-sidebar" role="complementary">-->
+<!--                                    --><?php //dynamic_sidebar( 'primary-nav-widgets' ); ?>
+<!--                                </aside>-->
+<!--                            --><?php //} ?>
+<!--                            --><?php //if ( true == get_theme_mod('primary_nav_widgets', false) && (is_active_sidebar('primary-nav-widgets')) ) { echo '</div>'; } ?>
+<!--                        </nav> end of Primary nav -->
+<!--                    --><?php //endif; ?>
                     <?php if ( ( '' !== get_theme_mod('header_custom_area', '') ) && ( is_front_page() ) ) : ?>
                         <div class="home-header-static-hero-block">
                         <?php
