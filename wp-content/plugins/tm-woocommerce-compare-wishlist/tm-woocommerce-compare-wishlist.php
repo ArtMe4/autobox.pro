@@ -221,17 +221,19 @@ class TM_WC_Compare_Wishlist {
 			'ajaxurl'     => admin_url( 'admin-ajax.php', is_ssl() ? 'https' : 'http' ),
 			'compareText' => get_option( 'tm_woocompare_compare_text', __( 'Add to Compare', 'tm-wc-compare-wishlist' ) ),
 			'removeText'  => get_option( 'tm_woocompare_remove_text', __( 'Remove from Compare List', 'tm-wc-compare-wishlist' ) ),
-			'countFormat' => apply_filters( 'tm_compare_count_format', '<span class="compare-count">(%count%)</span>' )
+			'countFormat' => apply_filters( 'tm_compare_count_format', '<span class="compare-count">%count%</span>' )
 		) );
 
 		// TM WooWishlist
 		wp_register_style( 'tm-woowishlist', tm_wc_compare_wishlist()->plugin_url() . '/assets/css/tm-woowishlist.css', array( 'dashicons' ) );
-		wp_register_script( 'tm-woowishlist', tm_wc_compare_wishlist()->plugin_url() . '/assets/js/tm-woowishlist' . $this->suffix . '.js', array( 'jquery' ), TM_WC_COMPARE_WISHLIST_VERISON, true );
+//		wp_register_script( 'tm-woowishlist', tm_wc_compare_wishlist()->plugin_url() . '/assets/js/tm-woowishlist' . $this->suffix . '.js', array( 'jquery' ), TM_WC_COMPARE_WISHLIST_VERISON, true );
+        wp_register_script( 'tm-woowishlist', tm_wc_compare_wishlist()->plugin_url() . '/assets/js/tm-woowishlist.js', array( 'jquery' ), TM_WC_COMPARE_WISHLIST_VERISON, true );
 
 		wp_localize_script( 'tm-woowishlist', 'tmWoowishlist', array(
 			'ajaxurl'   => admin_url( 'admin-ajax.php', is_ssl() ? 'https' : 'http' ),
 			'addText'   => get_option( 'tm_woowishlist_wishlist_text', __( 'Add to Wishlist', 'tm-wc-compare-wishlist' ) ),
-			'addedText' => get_option( 'tm_woowishlist_added_text', __( 'Added to Wishlist', 'tm-wc-compare-wishlist' ) )
+			'addedText' => get_option( 'tm_woowishlist_added_text', __( 'Added to Wishlist', 'tm-wc-compare-wishlist' ) ),
+            'countFormat' => apply_filters( 'tm_woowishlist_count_format', '<span class="wishlist-count">%count%</span>' )
 		) );
 	}
 
