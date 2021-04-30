@@ -55,8 +55,11 @@ class tz_login_register extends WP_Widget {
                 <div class="header__top-second">
                     <div class="login__drop">
                         <div class="login__drop-link">
-                            Личный кабинет
-                            <img src="/wp-content/themes/chromium/assets/img/personal.svg" alt="">
+                            <div class="login__text">
+                                Личный кабинет
+                            </div>
+                            <img class="desktop__login" src="/wp-content/themes/chromium/assets/img/personal.svg" alt="">
+                            <img class="mobile__login" src="/wp-content/themes/chromium/assets/img/mobile-login.svg" alt="">
                             <div class="drop-link__dropped">
                                 <?php if ( class_exists('WooCommerce') ) { ?>
                                     <a class="my-account" href="<?php echo esc_url( get_permalink( get_option('woocommerce_myaccount_page_id') ) ); ?>" title="<?php esc_html_e('My Account','tz-feature-pack'); ?>"><?php esc_html_e('My Account','tz-feature-pack'); ?></a>
@@ -65,11 +68,24 @@ class tz_login_register extends WP_Widget {
                             </div>
                         </div>
                     </div>
-                    <div class="second__wishlist">
-                        <a href="/wishlist/"><img src="/wp-content/themes/chromium/assets/img/like.svg" alt=""></a>
+                    <div class="second__wishlist" style="cursor: pointer;" onclick="window.location='/wishlist/';">
+<!--                        <a href="/wishlist/">-->
+                            <img src="/wp-content/themes/chromium/assets/img/like.svg" alt="">
+<!--                        </a>-->
+                        <div class="menu-wishlist">
+                            <a href="/wishlist/"></a>
+                        </div>
                     </div>
-                    <div class="second__compare">
-                        <a href="/compare/"><img src="/wp-content/themes/chromium/assets/img/analitycs.svg" alt=""></a>
+                    <div class="second__compare" style="cursor: pointer;" onclick="window.location='/compare/';">
+<!--                        <a href="/compare/">-->
+                            <img src="/wp-content/themes/chromium/assets/img/analitycs.svg" alt="">
+                        <div class="menu-compare">
+                            <a href="/compare/"></a>
+                            <!--                                    <img src="/wp-content/themes/chromium/assets/img/analitycs.svg" alt="">-->
+                        </div>
+<!--                            <span class="tm-woocompare-widget-wrapper">-->
+<!--                            </span>-->
+<!--                        </a>-->
                     </div>
                 </div>
 
@@ -91,19 +107,35 @@ class tz_login_register extends WP_Widget {
                         <div class="header__top-second">
                             <div class="login__drop">
                                 <div class="login__drop-link">
-                                    Личный кабинет
-                                    <img src="/wp-content/themes/chromium/assets/img/personal.svg" alt="">
+                                    <div class="login__text">
+                                        Личный кабинет
+                                    </div>
+                                    <img class="desktop__login" src="/wp-content/themes/chromium/assets/img/personal.svg" alt="">
+                                    <img class="mobile__login" src="/wp-content/themes/chromium/assets/img/mobile-login.svg" alt="">
                                     <div class="drop-link__dropped">
                                         <a class="login-button" id="show_login_form" href="#"><?php esc_html_e('Sign In', 'tz-feature-pack'); ?></a>
                                         <a class="login-button" id="show_register_form" href="#"><?php esc_html_e('Register', 'tz-feature-pack'); ?></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="second__wishlist">
-                                <a href="/wishlist/"><img src="/wp-content/themes/chromium/assets/img/like.svg" alt=""></a>
+                            <div class="second__wishlist" style="cursor: pointer;" onclick="window.location='/wishlist/';">
+                                <!--                        <a href="/wishlist/">-->
+                                <img src="/wp-content/themes/chromium/assets/img/like.svg" alt="">
+                                <!--                        </a>-->
+                                <div class="menu-wishlist">
+                                    <a href="/wishlist/"></a>
+                                </div>
                             </div>
-                            <div class="second__compare">
-                                <a href="/compare/"><img src="/wp-content/themes/chromium/assets/img/analitycs.svg" alt=""></a>
+                            <div class="second__compare" style="cursor: pointer;" onclick="window.location='/compare/';">
+                                <!--                        <a href="/compare/">-->
+                                <img src="/wp-content/themes/chromium/assets/img/analitycs.svg" alt="">
+                                <div class="menu-compare">
+                                    <a href="/compare/"></a>
+                                    <!--                                    <img src="/wp-content/themes/chromium/assets/img/analitycs.svg" alt="">-->
+                                </div>
+                                <!--                            <span class="tm-woocompare-widget-wrapper">-->
+                                <!--                            </span>-->
+                                <!--                        </a>-->
                             </div>
                         </div>
 

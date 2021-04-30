@@ -6,9 +6,15 @@
 		 $custom_logo_id = get_theme_mod( 'custom_logo' );
 		 if ($custom_logo_id && $custom_logo_id!='') : ?>
 			<div class="site-logo" itemscope itemtype="https://schema.org/Organization">
+                <div class="logo__account-mobile">
+                    <?php if ( is_active_sidebar('top-sidebar-right') ) dynamic_sidebar( 'top-sidebar-right' ); ?>
+                </div>
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php esc_attr( bloginfo( 'name' ) );?>" itemprop="url">
 						<?php echo wp_get_attachment_image( $custom_logo_id , 'full', array('itemprop' => 'logo' ) ); ?>
 					</a>
+                <div class="logo__account-basket">
+                    <?php dynamic_sidebar( 'sidebar-basket' ); ?>
+                </div>
 			</div>
 		<?php else : /* Output Text Logo */ ?>
 			<div class="header-group">
@@ -59,6 +65,7 @@
                                 <?php
                                 wp_nav_menu( array('theme_location'  => 'primary-nav') );
                                 ?>
+<!--                                --><?php //if ( is_active_sidebar('top-sidebar-left') ) dynamic_sidebar( 'top-sidebar-left' ); ?>
                                 <?php if ( true == get_theme_mod('primary_nav_widgets', false) && (is_active_sidebar('primary-nav-widgets')) ) { ?>
                                     <aside id="sidebar-nav" class="widget-area nav-sidebar" role="complementary">
                                         <?php dynamic_sidebar( 'primary-nav-widgets' ); ?>
@@ -67,8 +74,10 @@
                                 <?php if ( true == get_theme_mod('primary_nav_widgets', false) && (is_active_sidebar('primary-nav-widgets')) ) { echo '</div>'; } ?>
                             </nav><!-- end of Primary nav -->
                         <?php endif; ?>
+                    <div class="widgets__mobile-hide">
+                        <?php dynamic_sidebar( 'hgroup-sidebar' ); ?>
+                    </div>
 
-                    <?php dynamic_sidebar( 'hgroup-sidebar' ); ?>
             </div>
 		<?php endif; ?>
 
