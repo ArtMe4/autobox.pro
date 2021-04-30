@@ -8,6 +8,8 @@
 			tmWooAddedClass   = 'added in_wishlist',
 			buttonSelector    = 'button.tm-woowishlist-button';
 
+        $( document ).on( 'tm_woowishlist_update_fragments', updateFragments );
+
 		function productButtonsInit() {
 
 			$( document ).on( 'click', buttonSelector, function ( event ) {
@@ -16,10 +18,10 @@
 
 				event.preventDefault();
 
-				if( button.hasClass( 'in_wishlist' ) ) {
-
-					return;
-				}
+				// if( button.hasClass( 'in_wishlist' ) ) {
+                //
+				// 	return;
+				// }
 
 				var url  = tmWoowishlist.ajaxurl,
 					data = {
@@ -42,7 +44,40 @@
 
 						if( response.success ) {
 
-							button
+						    // console.log()
+
+                            // switch ( response.data.action ) {
+                            //
+                            //     case 'add':
+                            //
+                            //         $( buttonSelector + '[data-id=' + data.id + ']' )
+                            //             .addClass( tmWooAddedClass )
+                            //             .find( '.text' )
+                            //             .text( tmWoowishlist.removeText );
+                            //
+                            //         if( response.data.wishlistPageBtn ) {
+                            //
+                            //             button.after( response.data.wishlistPageBtn );
+                            //         }
+                            //         break;
+                            //
+                            //     case 'remove':
+                            //
+                            //         $( buttonSelector + '[data-id=' + data.id + ']' )
+                            //             .removeClass( tmWooAddedClass )
+                            //             .find( '.text' )
+                            //             .text( tmWoowishlist.wishlistText );
+                            //
+                            //         $( '.tm-woowishlist-page-button' ).remove();
+                            //
+                            //         break;
+                            //
+                            //     default:
+                            //
+                            //         break;
+                            // }
+
+						    button
 								.addClass( tmWooAddedClass )
 								.find( '.text' )
 								.text( tmWoowishlist.addedText );
@@ -56,6 +91,10 @@
 							};
 							tmWoowishlistAjax( null, data );
 						}
+
+                        if ( undefined !== response.data.counts ) {
+                            $( document ).trigger( 'tm_woowishlist_update_fragments', { response: response.data.counts } );
+                        }
 					}
 				);
 			} );
@@ -99,18 +138,39 @@
 						if( data.isWishlistPage ) {
 
 							$( 'div.tm-woowishlist-wrapper' ).html( response.data.wishList );
+                            // $( document ).trigger( 'enhance.tablesaw' );
 						}
-						if( data.isWidget ) {
+                        if( data.isWidget ) {
 
-							widgetWrapper.html( response.data.widget );
-						}
-						if ( 'tm_woowishlist_remove' === data.action ) {
+                            widgetWrapper.html( response.data.widget );
+                        }
+                        if ( 'tm_woowishlist_empty' === data.action ) {
 
-							$( buttonSelector + '[data-id=' + data.pid + ']' ).removeClass( tmWooAddedClass ).find( '.text' ).text( tmWoowishlist.addText );
+                            $( buttonSelector )
+                                .removeClass( tmWooAddedClass )
+                                .find( '.text' )
+                                .text( tmWoowishlist.wishlistText );
 
-							$( buttonSelector + '[data-id=' + data.pid + ']' ).next( '.tm-woowishlist-page-button' ).remove();
-						}
+                            $( '.tm-woowishlist-page-button' ).remove();
+                        }
+                        if ( 'tm_woowishlist_remove' === data.action ) {
+
+                            $( buttonSelector + '[data-id=' + data.pid + ']' ).removeClass( tmWooAddedClass ).find( '.text' ).text( tmWoowishlist.wishlistText );
+
+                            $( buttonSelector + '[data-id=' + data.pid + ']' ).next( '.tm-woowishlist-page-button' ).remove();
+
+                            // $( buttonSelector + '[data-id=' + data.pid + ']' )
+                            //     .removeClass( tmWooAddedClass )
+                            //     .find( '.text' )
+                            //     .text( tmWoowishlist.wishlistText );
+                            //
+                            // $( '.tm-woowishlist-page-button' ).remove();
+                        }
 					}
+                    if ( undefined !== response.data.counts ) {
+                        $( document ).trigger( 'tm_woowishlist_update_fragments', { response: response.data.counts } );
+                    }
+
 					widgetButtonsInit();
 				}
 			);
@@ -130,6 +190,15 @@
 			tmWoowishlistAjax( event, data );
 		}
 
+        function tmWoowishlistEmpty( event ) {
+
+            var data = {
+                action: 'tm_woowishlist_empty'
+            };
+
+            tmWoowishlistAjax( event, data );
+        }
+
 		function widgetButtonsInit() {
 
 			$( '.tm-woowishlist-remove' )
@@ -137,10 +206,59 @@
 				.on( 'click', function ( event ) {
 					tmWoowishlistRemove( event );
 				} );
+
+            $( '.tm-woowishlist-empty' )
+                .off( 'click' )
+                .on( 'click', function( event ) {
+                    tmWoowishlistEmpty( event );
+                } );
 		}
+
+        function getRefreshedFragments() {
+
+            $.ajax({
+                url: tmWoowishlist.ajaxurl,
+                type: 'get',
+                dataType: 'json',
+                data: {
+                    action: 'tm_woowishlist_get_fragments'
+                }
+            }).done( function( response ) {
+
+                $( document ).trigger( 'tm_woowishlist_update_fragments', { response: response.data } );
+
+            });
+
+        }
+
+        function updateFragments( event, data ) {
+
+            if ( ! $.isEmptyObject( data.response.defaultFragments ) ) {
+                $.each( data.response.defaultFragments, function( key, val ) {
+                    var $item  = $( key ),
+                        $count = $( '.wishlist-count', $item );
+                    if ( 0 === $count.length ) {
+                        $item.append( tmWoowishlist.countFormat.replace( '%count%', val ) );
+                    } else {
+                        $item.find( '.wishlist-count' ).html( val );
+                    }
+                } );
+            }
+
+            if ( ! $.isEmptyObject( data.response.customFragments ) ) {
+                $.each( data.response.customFragments, function( key, val ) {
+                    var $item = $( key );
+                    if ( $item.length ) {
+                        $item.html( val );
+                    }
+                } );
+            }
+
+        }
 
 		widgetButtonsInit();
 		productButtonsInit();
+        getRefreshedFragments();
 
 	} );
 }( jQuery) );
