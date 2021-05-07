@@ -769,6 +769,7 @@ li.product.product-category .woocommerce-loop-category__title .count {
   right: 45px;
   width: auto;
   margin-left: 0;
+  color: #00000080;
   background: transparent;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   height: 30px;
