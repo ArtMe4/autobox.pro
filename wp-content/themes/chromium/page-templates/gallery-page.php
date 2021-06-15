@@ -155,14 +155,15 @@ function chromium_gallery( $blank = NULL, $attr ) {
 
   		$output .= "<{$itemtag} class='gallery-item{$layout_class}'{$filter_arg}>";
   		$output .= "
-  			<{$icontag} class='gallery-icon'>
+  			
+			<{$icontag} class='gallery-icon'>
   				$image_output
   			</{$icontag}>";
         if ( $captiontag ) {
             $output .= "<{$captiontag} class='gallery-item-description'>";
             $output .= "<h3>" . esc_html( get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true ) ) . "</h3>";
             $output .= "<p class='btns-wrapper'>
-                        <a class='link-to-post' rel='bookmark' href='".esc_url(get_permalink($attachment->ID))."' title='".esc_attr__( 'Click to learn more', 'chromium')."'><i class='chromium-icon-link'></i></a>
+                        <noindex><a class='link-to-post' rel='bookmark' href='".esc_url(get_permalink($attachment->ID))."' title='".esc_attr__( 'Click to learn more', 'chromium')."'><i class='chromium-icon-link'></i></a></noindex>
                         <a class='quick-view' data-src='".esc_url(wp_get_attachment_url($attachment->ID))."' href='".esc_url(wp_get_attachment_url($attachment->ID))."' title='".esc_attr__('Quick View', 'chromium')."' rel='nofollow'><i class='chromium-icon-plus'></i></a>
                         </p>";
             $output .= "</{$captiontag}>";

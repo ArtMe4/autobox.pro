@@ -140,6 +140,9 @@ if ( !function_exists('chromium_scripts') ) :
         wp_enqueue_script('goals', get_template_directory_uri() . '/assets/js/goals.js', [], '1.0', true);
         wp_enqueue_script('href', get_template_directory_uri() . '/assets/js/href.js', [], '1.0', true);
 
+//        wp_dequeue_script();
+//        wp_deregister_script('tm-woowishlist');
+//        wp_enqueue_script('href', get_template_directory_uri() . '/assets/js/new-tm-woowishlist.js', [], '1.0', true);
 	}
 endif; /* end of if (!function_exists('chromium_scripts')) */
 add_action( 'wp_enqueue_scripts', 'chromium_scripts' );
@@ -160,6 +163,24 @@ if ( !function_exists('chromium_sidebars_init') ) :
 			'before_title' => '<div class="like-h3 widget-title" itemprop="name"><span>',
 			'after_title' => '</span></div>',
 		) );
+        register_sidebar( array(
+            'name' => esc_html__( 'Header Basket Sidebar', 'chromium' ),
+            'id' => 'sidebar-basket',
+            'description' => esc_html__( 'For mobile logo basket', 'chromium' ),
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget' => '</div>',
+            'before_title' => '<!--',
+            'after_title' => '-->',
+        ) );
+        register_sidebar( array(
+            'name' => esc_html__( 'Header Search Sidebar', 'chromium' ),
+            'id' => 'sidebar-search',
+            'description' => esc_html__( 'For mobile logo search', 'chromium' ),
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget' => '</div>',
+            'before_title' => '<!--',
+            'after_title' => '-->',
+        ) );
 		register_sidebar( array(
 			'name' => esc_html__( 'Front Page Sidebar', 'chromium' ),
 			'id' => 'sidebar-front',
@@ -414,6 +435,8 @@ add_action('wpseo_register_extra_replacements', 'register_custom_yoast_variables
 //    return $template_content;
 //}
 
+
+// Изменение тега и классов у фильтров в каталоге
 add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
 add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
 function some_custom_berocket_aapf_template_full_content($template_content) {
@@ -425,7 +448,7 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
     return $template_content;
 }
 
-
+// Изменение текста в корзине
 add_filter('gettext', 'translate_text');
 add_filter('ngettext', 'translate_text');
 
