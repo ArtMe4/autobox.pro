@@ -108,13 +108,13 @@ if (!function_exists('chromium_close_img_wrapper')) {
 }
 if (!function_exists('chromium_product_excerpt_wrapper_start')) {
 	function chromium_product_excerpt_wrapper_start() {
-		echo '<div class="excerpt-wrapper">';
+		echo '<div class="excerpt-wrapper"><div class="product-cart__wrap-upper">';
 	}
 	add_action( 'woocommerce_shop_loop_item_title', 'chromium_product_excerpt_wrapper_start', 2 );
 }
 if (!function_exists('chromium_product_excerpt_wrapper_end')) {
 	function chromium_product_excerpt_wrapper_end() {
-		echo '</div>';
+		echo '</div></div>';
 	}
 	add_action( 'woocommerce_after_shop_loop_item', 'chromium_product_excerpt_wrapper_end', 15 );
 }
@@ -144,13 +144,13 @@ if (!function_exists('chromium_product_reviews_counter')) {
 		global $product;
 		$review_count = $product->get_review_count();
 		if ( $review_count && ('yes' === get_option( 'woocommerce_enable_review_rating' )) ) {
-			echo '<div class="reviews-wrapper">';
+			echo '<div class="product-cart__wrap-down"><div class="reviews-wrapper">';
 			echo '<span>';
 			printf( esc_html( _n( '(%1$s review)', '(%1$s reviews)', $review_count, 'chromium' ) ), esc_html( $review_count ) );
 			echo '</span>';
 			echo '</div>';
 		} elseif ( !$review_count && ('yes' === get_option( 'woocommerce_enable_review_rating' )) ) {
-			echo '<div class="star-rating"></div>';
+			echo '<div class="product-cart__wrap-down"><div class="star-rating"></div>';
 			echo '<div class="reviews-wrapper">';
 			echo '<span>';
 			esc_html_e( '(0 reviews)', 'chromium' );
@@ -197,7 +197,7 @@ remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_pro
 add_action('woocommerce_shop_loop_item_title', 'change_product_title_tag', 10);
 function change_product_title_tag()
 {
-    echo '<div class="like-h2 ' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</div>';
+    echo '<div class="like-h2 ' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</div></div>';
 }
 
 // Add percentage label to sale products price
