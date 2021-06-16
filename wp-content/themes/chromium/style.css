@@ -1393,7 +1393,12 @@ p + .page-links{
     max-width: 300px;
     min-width: 300px;
   }
-  .site-boxed .site-content {
+
+  .site-boxed.layout-two-col-left .site {
+    grid-template-columns: 1fr repeat(4, 240px) 1fr;
+  }
+  
+  .site-boxed .site-content, .woocommerce-breadcrumb {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
@@ -1513,10 +1518,11 @@ p + .page-links{
   }
 
   @media screen and (min-width: 1200px) {
-    .site-boxed .site {
+    .site-boxed.layout-two-col-left .site, .site-boxed .site {
       grid-template-columns: 1fr repeat(4, 300px) 1fr;
-      grid-template-areas: " header header header header header header " " . breadcrumbs breadcrumbs breadcrumbs breadcrumbs . " " . content content content sidebar . " " footer footer footer footer footer footer ";
+      grid-template-areas: " header header header header header header " " . breadcrumbs breadcrumbs breadcrumbs breadcrumbs . " " . sidebar content content content . " " footer footer footer footer footer footer ";
     }
+ 
   }
 
   @media screen and (min-width: 992px) {
@@ -1531,10 +1537,6 @@ p + .page-links{
     .layout-two-col-left .site {
       grid-template-columns: minmax(100px, 300px) 1fr 1fr 1fr;
       grid-template-areas: "header header header header" "breadcrumbs breadcrumbs breadcrumbs breadcrumbs" "sidebar content content content" "footer footer footer footer";
-    }
-    .site-boxed.layout-two-col-left .site {
-      grid-template-columns: 1fr repeat(4, max-content) 1fr;
-      grid-template-areas: " header header header header header header " " . breadcrumbs breadcrumbs breadcrumbs breadcrumbs . " " . sidebar content content content . " " footer footer footer footer footer footer ";
     }
     .layout-one-col .site {
       grid-template-areas: " header header header header " "breadcrumbs breadcrumbs breadcrumbs breadcrumbs" " content content content content " " footer footer footer footer ";
@@ -8321,5 +8323,29 @@ body:not(.chromium-look-tires) .widget_tz_shopping_cart .heading .cart-count-wra
 /*  }*/
 /*}*/
 
+ul.products:not(.grid-view) .product, ul.products:not(.grid-view) .product .inner-wrapper {
 
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
 
+}
+
+li.product .img-wrapper {
+    flex-grow: 0;
+}
+
+li.product .excerpt-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-cart__wrap-upper {
+    flex-grow: 1;
+}
+
+.product-cart__wrap-down {
+    flex-grow: 0;
+}
