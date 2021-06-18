@@ -787,7 +787,8 @@ li.product.product-category .woocommerce-loop-category__title .count {
 }
 
 .chromium-product-style-2 .owl-carousel .owl-stage-outer, .chromium-product-style-3 .owl-carousel .owl-stage-outer, .chromium-product-style-4 .owl-carousel .owl-stage-outer {
-  width: calc(100% + 18px);
+  /*width: calc(100% + 18px);*/
+    width: 100%;
   padding-left: 9px;
   margin-left: -9px;
   padding-bottom: 9px;
@@ -3253,12 +3254,12 @@ table.variations td label {
 .entry-summary a.button.tm-woowishlist-page-button, .entry-summary a.button.tm-woocompare-page-button {
   padding: 0;
   height: 26px;
-  line-height: 26px;
+  line-height: 13px;
   width: 50%;
   position: absolute;
   text-align: center;
   margin: 0;
-  bottom: -18px;
+  bottom: -30px;
   left: 0;
   background-color: transparent;
 }
@@ -5117,3 +5118,17 @@ li.product .excerpt-wrapper .button {
     height: 100%;
 }
 
+.in_wishlist .text {
+    line-height: 20px;
+}
+.in_compare .text {
+    line-height: 20px;
+}
+
+.tm_woocompare_product_actions_tip {
+    line-height: 20px;
+}
+
+.tm_woowishlist_product_actions_tip {
+    line-height: 20px;
+}
