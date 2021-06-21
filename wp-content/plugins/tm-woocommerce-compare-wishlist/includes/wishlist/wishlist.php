@@ -478,10 +478,10 @@ function tm_woowishlist_render_table( $atts = array() ) {
 
 function tm_woowislist_session_to_db() {
 
-	if ( is_user_logged_in() ) {
+//	if ( is_user_logged_in() ) {
 
 		$list         = tm_woowishlist_get_list();
-		$session_list = ! empty( $_SESSION['tm-woowishlist'] ) ? $_SESSION['tm-woowishlist'] : array();
+		$session_list = array();
 
 		if ( ! empty( $session_list ) ) {
 
@@ -499,7 +499,7 @@ function tm_woowislist_session_to_db() {
 			}
 			tm_woowishlist_set_list( array() );
 		}
-	}
+//	}
 }
 
 add_action( 'wp_ajax_tm_woowishlist_get_fragments',        'tm_woowishlist_update_fragments' );
