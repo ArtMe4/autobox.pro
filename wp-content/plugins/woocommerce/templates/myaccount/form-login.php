@@ -28,8 +28,9 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 	<div class="u-column1 col-1">
 
 <?php endif; ?>
-
+    </div>
 		<h2><?php esc_html_e( 'Login', 'woocommerce' ); ?></h2>
+
 
 		<form class="woocommerce-form woocommerce-form-login login" method="post">
 
