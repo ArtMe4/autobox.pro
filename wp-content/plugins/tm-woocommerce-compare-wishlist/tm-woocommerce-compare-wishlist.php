@@ -155,7 +155,7 @@ class TM_WC_Compare_Wishlist {
 
 		if ( is_null( $this->suffix ) ) {
 
-			$this->suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+			//$this->suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 		}
 	}
 

@@ -49,7 +49,6 @@
 										.text( tmWoocompare.removeText );
 
 									if( response.data.comparePageBtn ) {
-
 										button.after( response.data.comparePageBtn );
 									}
 									break;

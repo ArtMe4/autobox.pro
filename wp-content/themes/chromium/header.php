@@ -8,8 +8,9 @@
             echo '<meta name="robots" content="noindex" />';
         ?>
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="cmsmagazine" content="4be1bfa70b3d4b0b650c5469488496b4" />
+        <meta id="mvp" name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <script>function v(){let e=screen.width<=360?"width=360,user-scalable=no":"width=device-width,initial-scale=1,maximum-scale=1";document.getElementById("mvp").setAttribute("content",e)}v();window.onresize=function(n){v()}</script>
+        <meta name="cmsmagazine" content="4be1bfa70b3d4b0b650c5469488496b4" />
 		<link rel="profile" href="https://gmpg.org/xfn/11">
 		<link rel="icon" href="/favicon.png" type="image/x-icon">
 		<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>

@@ -87,3 +87,27 @@ ul.products:not(.grid-view) .product .inner-wrapper {
         justify-content: center;
     }
 }
+
+
+@media screen and (max-width: 575px) {
+    .wishlist-compare-wrapper .in_wishlist,
+    .wishlist-compare-wrapper .in_compare {
+        margin-bottom: 40px!important;
+    }
+
+    .entry-summary a.button.tm-woowishlist-page-button, .entry-summary a.button.tm-woocompare-page-button {
+        bottom: -5px !important;
+    }
+
+    .wishlist-compare-wrapper .text {
+        display: block;
+        line-height: 16px;
+        text-align: left;
+        margin-left: 10px;
+    }
+
+    .wishlist-compare-wrapper a.btn-primary {
+        padding-left: 10px!important;
+        padding-right: 10px!important;
+    }
+}
