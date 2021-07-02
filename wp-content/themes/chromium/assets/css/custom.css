@@ -111,3 +111,13 @@ ul.products:not(.grid-view) .product .inner-wrapper {
         padding-right: 10px!important;
     }
 }
+
+.tm-woowishlist-item .tm-woocomerce-list__product-image {
+    height: 100%;
+}
+
+@media screen and (max-width: 575px) {
+    .tm-woowishlist-item {
+        padding-left: 0;
+    }
+}
