@@ -2911,6 +2911,7 @@ div.product .product-custom-labels-wrapper {
   align-items: center;
 }
 
+
 .product-shares-wrapper .tz-social-links div.wrapper {
   opacity: 1;
   visibility: visible;
@@ -2919,7 +2920,6 @@ div.product .product-custom-labels-wrapper {
   width: -webkit-calc(100% - 90px);
   width: calc(100% - 90px);
   right: auto;
-  height: 30px;
   line-height: 30px;
 }
 
@@ -3564,8 +3564,13 @@ h2.woocommerce-Reviews-title, #review_form .comment-reply-title {
 #review_form label {
   display: inline-block;
   padding: 0 1em 0 0;
-  width: 120px;
   font-weight: 500;
+}
+
+@media screen and (min-width: 1024px) {
+  #review_form label {
+    width: 120px;
+  }
 }
 
 #reviews .comment-form .oneall_social_login {

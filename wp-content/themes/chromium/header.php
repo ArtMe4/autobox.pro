@@ -33,6 +33,16 @@
         </script>
         <noscript><div><img src="https://mc.yandex.ru/watch/65800849" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
         <!-- /Yandex.Metrika counter -->
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153981354-2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-153981354-2');
+        </script>
 	</head>
 
 	<body <?php body_class(); ?>>
@@ -52,30 +62,6 @@
                     <?php /* Logo group */
                         get_template_part( 'template-parts/logo-group' );
                     ?>
-
-<!--                    --><?php //if (has_nav_menu( 'primary-nav' )) :
-//                        $nav_class = '';
-//                        if ( true == get_theme_mod('primary_nav_widgets', false) && (is_active_sidebar('primary-nav-widgets')) ) {
-//                            $nav_class = ' with-widgets';
-//                            if ( 'left' == get_theme_mod('primary_nav_widgets_position', 'right') ) {
-//                                $nav_class .= ' reversed';
-//                            }
-//                        } ?>
-<!--                        <nav id="site-navigation" class="main-navigation primary-nav--><?php //echo esc_attr($nav_class); ?><!--" itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement" role="navigation"> Primary nav -->
-<!--                            <a class="screen-reader-text skip-link" href="#content">--><?php //esc_html_e( 'Skip to content', 'chromium' ); ?><!--</a>-->
-<!--                            --><?php //if ( true == get_theme_mod('primary_nav_widgets', false) && (is_active_sidebar('primary-nav-widgets')) ) { echo '<div class="primary-nav-wrapper">'; } ?>
-<!--                            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">--><?php //esc_html_e( 'Menu', 'chromium' ); ?><!--</button>-->
-<!--                            --><?php
-//                            wp_nav_menu( array('theme_location'  => 'primary-nav') );
-//                            ?>
-<!--                            --><?php //if ( true == get_theme_mod('primary_nav_widgets', false) && (is_active_sidebar('primary-nav-widgets')) ) { ?>
-<!--                                <aside id="sidebar-nav" class="widget-area nav-sidebar" role="complementary">-->
-<!--                                    --><?php //dynamic_sidebar( 'primary-nav-widgets' ); ?>
-<!--                                </aside>-->
-<!--                            --><?php //} ?>
-<!--                            --><?php //if ( true == get_theme_mod('primary_nav_widgets', false) && (is_active_sidebar('primary-nav-widgets')) ) { echo '</div>'; } ?>
-<!--                        </nav> end of Primary nav -->
-<!--                    --><?php //endif; ?>
                     <?php if ( ( '' !== get_theme_mod('header_custom_area', '') ) && ( is_front_page() ) ) : ?>
                         <div class="home-header-static-hero-block">
                         <?php
@@ -84,16 +70,6 @@
                         </div>
                     <?php endif; ?>
                 <?php endif; ?>
-                <!-- Global site tag (gtag.js) - Google Analytics -->
-                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153981354-2"></script>
-                <script>
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-
-                  gtag('config', 'UA-153981354-2');
-                </script>
-        <meta name="cmsmagazine" content="4be1bfa70b3d4b0b650c5469488496b4" />
 			</header><!-- end of Site's Header -->
 
 			<?php // Breadcrumbs by Yoast

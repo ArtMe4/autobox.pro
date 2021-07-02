@@ -493,8 +493,10 @@ jQuery(document).ready(function($) {
     var el = document.querySelector('.product-chrom-style .flex-control-thumbs');
 
     if (el){
+        let gallery_h = window.innerWidth > 1023 ? 420 : 122;
+
         $(el).css({
-            'min-height': '420px',
+            'min-height': gallery_h + 'px',
         });
         $(el).css({
             'height': $(el).height() + 'px',

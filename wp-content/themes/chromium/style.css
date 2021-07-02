@@ -6511,6 +6511,12 @@ button::-moz-focus-inner {
   font-weight: normal;
 }
 
+@media (max-width: 768px) {
+  .tm-woocompare-row {
+    display: block;
+  }
+}
+
 /* Ajax Product Search Styles */
 
 .site .dgwt-wcas-sf-wrapp input[type="search"].dgwt-wcas-search-input {
