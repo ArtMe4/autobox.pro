@@ -392,7 +392,7 @@ function product_advantages() {
             <img width="64" height="64" src="/wp-content/uploads/2018/05/delivery-truck-2-64x64.png" alt="">
             <span>Доставка по РФ</span>
             <div class="single-label__popup">
-                Информация о доставке по <a href="/dostavka-i-oplata/">ссылке</a>
+                Информация о доставке по <a href="'. get_the_permalink(6045) .'">ссылке</a>
             </div>
         </div>
     </div>';
