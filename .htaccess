@@ -193,3 +193,8 @@ RewriteRule . /index.php [L]
 # END WordPress
 
 Redirect 301 /2020/06/08/elementor-4520/ https://basszone.ru/elementor-4520/
+Redirect 301 /product-category/усилители/ /product-category/usiliteli/
+Redirect 301 /product-category/усилители/2-h-kanalnye-usiliteli/ /product-category/usiliteli/2-h-kanalnye-usiliteli/
+Redirect 301 /product-category/усилители/4-h-kanalnye-usilite /product-category/usiliteli/4-h-kanalnye-usiliteli/
+Redirect 301 /product-category/усилители/mnogokanalnye-usiliteli/ /product-category/usiliteli/mnogokanalnye-usiliteli/
+Redirect 301 /product-category/усилители/usiliteli/monobloki/ /product-category/usiliteli/monobloki/
