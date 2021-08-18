@@ -31,13 +31,6 @@
                         <div class="privacy-policy">
                             <a href="/privacy/">Политика конфиденциальности</a>
                         </div>
-                        <div class="dev-by">
-                            <span class="dev-by__label">Создание и продвижение</span>
-                            <a href="https://digitalaround.ru/" class="dev-by__link" target="_blank"
-                                <?= $_SERVER['REQUEST_URI'] == '/' ? '' : 'rel="nofollow"'; ?>>
-                                <img src="/wp-content/uploads/dev-by-da.svg" alt="Digital Around">
-                            </a>
-                        </div>
 					</div>
 				</aside><!-- end of Footer's widgets -->
 				<?php } ?>
@@ -59,6 +52,23 @@
 		</div><!-- end of Site's Wrapper -->
 
 		<?php wp_footer(); ?>
+
+        <!-- Yandex.Metrika counter -->
+        <script type="text/javascript" >
+            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+                m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+            ym(65800849, "init", {
+                clickmap:true,
+                trackLinks:true,
+                accurateTrackBounce:true,
+                webvisor:true,
+                ecommerce:"dataLayer"
+            });
+        </script>
+        <noscript><div><img src="https://mc.yandex.ru/watch/65800849" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        <!-- /Yandex.Metrika counter -->
 
         <script src="//cdn.callibri.ru/callibri.js" type="text/javascript" charset="utf-8"></script>
         
