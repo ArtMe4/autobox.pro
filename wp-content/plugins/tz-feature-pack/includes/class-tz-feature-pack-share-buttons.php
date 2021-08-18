@@ -22,9 +22,9 @@ class tz_share_buttons {
 
     $shares_total = array_sum($shares_array);
     if ( class_exists('WooCommerce') && is_product() ) {
-      return '<div class="tz-social-links"><span class="heading">'.esc_html__('Share ', 'tz-feature-pack').'('.esc_html($shares_total).')</span><div class="wrapper">'.implode('', $button_array).'</div></div>';
+      return '<noindex><div class="tz-social-links"><span class="heading">'.esc_html__('Share ', 'tz-feature-pack').'('.esc_html($shares_total).')</span><div class="wrapper">'.implode('', $button_array).'</div></div></noindex>';
     } else {
-      return '<div class="tz-social-links"><span class="heading"><i class="share-icon"></i>'.esc_html__('Share ', 'tz-feature-pack').'('.esc_html($shares_total).')</span><div class="wrapper">'.implode('', $button_array).'</div></div>';
+      return '<noindex><div class="tz-social-links"><span class="heading"><i class="share-icon"></i>'.esc_html__('Share ', 'tz-feature-pack').'('.esc_html($shares_total).')</span><div class="wrapper">'.implode('', $button_array).'</div></div></noindex>';
     }
 	}
 
@@ -60,11 +60,11 @@ class tz_share_buttons {
 		);
 
     if ( class_exists('Woocommerce') && is_product() ) {
-      return '<a class="post-share-button" data-service="'.esc_attr($soc_net).'" data-postID="'.get_the_ID().'" href="'.$this->get_social_url($soc_net).'" target="_blank" title="'.esc_attr($titlemap[$soc_net]).'">
+      return '<a class="post-share-button" data-service="'.esc_attr($soc_net).'" data-postID="'.get_the_ID().'" href="'.$this->get_social_url($soc_net).'" target="_blank" title="'.esc_attr($titlemap[$soc_net]).'" rel="nofollow">
                 <i class="fa fa-'.esc_attr($charmap[$soc_net]).'"></i><small class="sharecount">'.esc_html__('Total: ', 'tz-feature-pack').esc_html($this->get_share_count($soc_net)).'</small>
               </a>';
     } else {
-		  return '<a class="post-share-button '.esc_attr($soc_net).'" data-service="'.esc_attr($soc_net).'" data-postID="'.get_the_ID().'" href="'.$this->get_social_url($soc_net).'" target="_blank" title="'.esc_attr($titlemap[$soc_net]).'">
+		  return '<a class="post-share-button '.esc_attr($soc_net).'" data-service="'.esc_attr($soc_net).'" data-postID="'.get_the_ID().'" href="'.$this->get_social_url($soc_net).'" target="_blank" title="'.esc_attr($titlemap[$soc_net]).'" rel="nofollow">
 							'.esc_html__('Share with ', 'tz-feature-pack').'<i class="fa fa-'.esc_attr($charmap[$soc_net]).'"></i><span class="sharecount">'.esc_html($this->get_share_count($soc_net)).'</span>
 						  </a>';
     }
