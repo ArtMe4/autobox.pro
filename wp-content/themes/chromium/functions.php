@@ -459,9 +459,18 @@ function translate_text($translated) {
 
 // canonical для пагинации
 add_filter('wpseo_canonical', 'removeCanonicalArchivePagination');
-
 function removeCanonicalArchivePagination($link) {
-    $link = preg_replace('#\\??/page[\\/=]\\d+#', '', $link);
-    $link = preg_replace('#\\??.tmweb#', '', $link);
-    return $link;
+    if (is_paged()) {
+        return preg_replace('#\\??/page[\\/=]\\d+#', '', $link);
+    }
+}
+
+add_filter('wpseo_title', 'addPageNumberOnTitle');
+function addPageNumberOnTitle($title) {
+    if (is_paged()) {
+        global $paged;
+        $title .= ' - Страница ' . $paged;
+    }
+
+    return $title;
 }
