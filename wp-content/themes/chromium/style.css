@@ -5693,6 +5693,11 @@ figure.gallery-item:hover figcaption {
   transform: scale(1, 1);
 }
 
+#chromium-gallery .gallery-item-description .btns-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
 #chromium-gallery .gallery-item-description a {
   display: inline-block;
   width: 40px;
@@ -5708,6 +5713,10 @@ figure.gallery-item:hover figcaption {
   font-size: 16px;
   float: left;
   opacity: 0;
+}
+
+#chromium-gallery .gallery-item-description a.quick-view:first-child {
+  margin-left: auto;
 }
 
 #chromium-gallery .gallery-item-description a i:before {

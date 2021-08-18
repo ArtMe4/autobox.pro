@@ -173,11 +173,11 @@ class tz_login_register extends WP_Widget {
 				<p class="status"></p>
 				<?php wp_nonce_field('ajax-login-nonce', 'security'); ?>
 				<p class="username">
-					<label for="username"><?php esc_html_e('Username', 'tz-feature-pack');?><span class="required">*</span></label>
+					<label><?php esc_html_e('Username', 'tz-feature-pack');?><span class="required">*</span></label>
 					<input type="text" class="tz-login-username" placeholder="<?php esc_html_e('Username', 'tz-feature-pack');?>" name="username" required aria-required="true" pattern="<?php echo apply_filters('feedback_form_sender_pattern', '[a-zA-Z0-9 ]+'); ?>" title="<?php esc_html_e('Digits and Letters only.', 'tz-feature-pack'); ?>">
 				</p>
 				<p class="password">
-					<label for="password"><?php esc_html_e('Password', 'tz-feature-pack');?><span class="required">*</span></label>
+					<label><?php esc_html_e('Password', 'tz-feature-pack');?><span class="required">*</span></label>
 					<input type="password" class="tz-login-password" placeholder="<?php esc_html_e('Password', 'tz-feature-pack');?>" name="password" required aria-required="true">
 				</p>
 				<p class="submit-wrapper">
@@ -202,17 +202,17 @@ class tz_login_register extends WP_Widget {
 				<p class="status"></p>
 				<?php wp_nonce_field('ajax-register-nonce', 'signonsecurity'); ?>
 				<p class="username">
-					<label for="signonname"><?php esc_html_e('Username', 'tz-feature-pack');?><span class="required">*</span></label>
+					<label><?php esc_html_e('Username', 'tz-feature-pack');?><span class="required">*</span></label>
 					<input class="tz-register-username" placeholder="<?php esc_html_e('Username', 'tz-feature-pack');?>" type="text" name="signonname" required aria-required="true" pattern="<?php echo apply_filters('register_form_username_pattern', '[a-zA-Z0-9 ]+'); ?>" title="<?php esc_html_e('Digits and Letters only.', 'tz-feature-pack'); ?>">
 					<input type="text" name="register-firstname" class="tz-register-firstname" maxlength="50" value="<?php echo ( isset( $_POST["firstname"] ) ? esc_attr( $_POST["firstname"] ) : '' ); ?>" />
 					<input type="text" name="register-lastname" class="tz-register-lastname" maxlength="50" value="<?php echo ( isset( $_POST["lastname"] ) ? esc_attr( $_POST["lastname"] ) : '' ); ?>" />
 				</p>
 				<p class="email">
-					<label for="email"><?php esc_html_e('Email', 'tz-feature-pack');?><span class="required">*</span></label>
+					<label><?php esc_html_e('Email', 'tz-feature-pack');?><span class="required">*</span></label>
 					<input class="tz-register-email" placeholder="<?php esc_html_e('E-Mail', 'tz-feature-pack');?>" type="email" name="email" required aria-required="true">
 				</p>
 				<p class="password">
-					<label for="signonpassword"><?php esc_html_e('Password', 'tz-feature-pack');?><span class="required">*</span></label>
+					<label><?php esc_html_e('Password', 'tz-feature-pack');?><span class="required">*</span></label>
 					<input class="tz-register-password" placeholder="<?php esc_html_e('Password', 'tz-feature-pack');?>" type="password" name="signonpassword" required aria-required="true">
 				</p>
 				<p class="submit-wrapper">

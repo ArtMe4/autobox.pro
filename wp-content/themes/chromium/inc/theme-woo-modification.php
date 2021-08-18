@@ -149,6 +149,7 @@ if (!function_exists('chromium_product_reviews_counter')) {
 			printf( esc_html( _n( '(%1$s review)', '(%1$s reviews)', $review_count, 'chromium' ) ), esc_html( $review_count ) );
 			echo '</span>';
 			echo '</div>';
+            echo '</div>';
 		} elseif ( !$review_count && ('yes' === get_option( 'woocommerce_enable_review_rating' )) ) {
 			echo '<div class="product-cart__wrap-down"><div class="star-rating"></div>';
 			echo '<div class="reviews-wrapper">';
@@ -156,6 +157,7 @@ if (!function_exists('chromium_product_reviews_counter')) {
 			esc_html_e( '(0 reviews)', 'chromium' );
 			echo '</span>';
 			echo '</div>';
+            echo '</div>';
 		}
 	}
 	add_action( 'woocommerce_after_shop_loop_item_title', 'chromium_product_reviews_counter', 6 );
@@ -197,7 +199,7 @@ remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_pro
 add_action('woocommerce_shop_loop_item_title', 'change_product_title_tag', 10);
 function change_product_title_tag()
 {
-    echo '<div class="like-h2 ' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</div></div>';
+    echo '<div class="like-h2 ' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</div>';
 }
 
 // Add percentage label to sale products price

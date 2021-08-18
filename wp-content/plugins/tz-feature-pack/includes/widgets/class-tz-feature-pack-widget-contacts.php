@@ -140,17 +140,19 @@ class tz_contacts extends WP_Widget {
 		<?php if ( ! empty( $precontent ) ) {
 			echo '<div class="precontent">'.esc_attr($precontent).'</div>';
 		} ?>
+            <div itemprop="sourceOrganization" itemscope="itemscope" itemtype="https://schema.org/LocalBusiness">
+                <?php if($company_name != '' ) : ?><meta itemprop="name" content="<?php echo esc_attr($company_name); ?>"><?php endif; ?>
+                <ul>
+                    <?php if($image_url != '' ) : ?><li class="option-title a-logo"><div class="logo"><img alt="<?php echo esc_attr($company_name); ?>" src="<?php echo esc_url($image_url); ?>" itemprop="logo" /></div></li><?php endif; ?>
+                    <?php if($address != '' ) : ?><li class="option-title a-address"><div class="address" itemprop="address"><span class="label"><?php esc_html_e('Address: ', 'tz-feature-pack'); ?></span><?php echo strip_tags($address, '<br><span><span/>'); ?></div></li><?php endif; ?>
+                    <?php if($phone != '' ) : ?><li class="option-title a-phone"><div class="phone" itemprop="telephone"><span class="label"><?php esc_html_e('Phone: ', 'tz-feature-pack'); ?></span><?php echo strip_tags($phone, '<br><span><span/>'); ?></div></li><?php endif; ?>
+                    <?php if($fax != '' ) : ?><li class="option-title a-fx"><div class="fax"><span class="label"><?php esc_html_e('Fax: ', 'tz-feature-pack'); ?></span><?php echo esc_attr($fax); ?></div></li><?php endif; ?>
+                    <?php if($skype != '' ) : ?><li class="option-title a-skype"><div class="skype"><span class="label"><?php esc_html_e('Skype: ', 'tz-feature-pack'); ?></span><?php echo esc_attr($skype); ?></div></li><?php endif; ?>
+                    <?php if($email != '' ) : ?><li class="option-title a-email"><div class="email" itemprop="email"><span class="label"><?php esc_html_e('E-mail: ', 'tz-feature-pack'); ?></span><a title="Email us" href="mailto:<?php echo esc_attr($email); ?>"><?php echo esc_attr($email); ?></a></div></li><?php endif; ?>
+                    <?php if($working_hours != '' ) : ?><li class="option-title a-hours"><div class="hours"><span class="label"><?php esc_html_e('Working Hours: ', 'tz-feature-pack'); ?></span><?php echo strip_tags($working_hours, '<br><span><span/>'); ?></div></li><?php endif; ?>
+                </ul>
+            </div>
 
-			<ul itemprop="sourceOrganization" itemscope="itemscope" itemtype="https://schema.org/LocalBusiness">
-				<?php if($company_name != '' ) : ?><meta itemprop="name" content="<?php echo esc_attr($company_name); ?>"><?php endif; ?>
-				<?php if($image_url != '' ) : ?><li class="option-title a-logo"><div class="logo"><img alt="<?php echo esc_attr($company_name); ?>" src="<?php echo esc_url($image_url); ?>" itemprop="logo" /></div></li><?php endif; ?>
-				<?php if($address != '' ) : ?><li class="option-title a-address"><div class="address" itemprop="address"><span class="label"><?php esc_html_e('Address: ', 'tz-feature-pack'); ?></span><?php echo strip_tags($address, '<br><span><span/>'); ?></div></li><?php endif; ?>
-				<?php if($phone != '' ) : ?><li class="option-title a-phone"><div class="phone" itemprop="telephone"><span class="label"><?php esc_html_e('Phone: ', 'tz-feature-pack'); ?></span><?php echo strip_tags($phone, '<br><span><span/>'); ?></div></li><?php endif; ?>
-				<?php if($fax != '' ) : ?><li class="option-title a-fx"><div class="fax"><span class="label"><?php esc_html_e('Fax: ', 'tz-feature-pack'); ?></span><?php echo esc_attr($fax); ?></div></li><?php endif; ?>
-				<?php if($skype != '' ) : ?><li class="option-title a-skype"><div class="skype"><span class="label"><?php esc_html_e('Skype: ', 'tz-feature-pack'); ?></span><?php echo esc_attr($skype); ?></div></li><?php endif; ?>
-				<?php if($email != '' ) : ?><li class="option-title a-email"><div class="email" itemprop="email"><span class="label"><?php esc_html_e('E-mail: ', 'tz-feature-pack'); ?></span><a title="Email us" href="mailto:<?php echo esc_attr($email); ?>"><?php echo esc_attr($email); ?></a></div></li><?php endif; ?>
-				<?php if($working_hours != '' ) : ?><li class="option-title a-hours"><div class="hours"><span class="label"><?php esc_html_e('Working Hours: ', 'tz-feature-pack'); ?></span><?php echo strip_tags($working_hours, '<br><span><span/>'); ?></div></li><?php endif; ?>
-			</ul>
 
 		<?php
 		if ( ! empty( $postcontent ) ) {

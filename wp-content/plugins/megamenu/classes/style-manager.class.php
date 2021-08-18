@@ -1076,13 +1076,13 @@ if ( ! class_exists( 'Mega_Menu_Style_Manager' ) ) :
 			$method = $this->get_css_output_method();
 
 			if ( in_array( $method, array( 'disabled', 'fs' ) ) ) {
-				echo "<style type=\"text/css\">/** Mega Menu CSS: {$method} **/</style>\n";
+				echo "<style>/** Mega Menu CSS: {$method} **/</style>\n";
 				return;
 			}
 
 			$css = $this->get_css();
 
-			echo '<style type="text/css">' . str_replace( array( '  ', "\n" ), '', $css ) . "</style>\n";
+			echo '<style>' . str_replace( array( '  ', "\n" ), '', $css ) . "</style>\n";
 
 		}
 

@@ -436,7 +436,7 @@ class BeRocket_aapf_deprecated_compat_addon extends BeRocket_framework_addon_lib
             $result_css .= '}';
         }
         if( ! empty($result_css) ) {
-            echo '<style type="text/css">' . $result_css . '</style>';
+            echo '<style>' . $result_css . '</style>';
         }
     }
     function deprecated_template_get($template, $name) {

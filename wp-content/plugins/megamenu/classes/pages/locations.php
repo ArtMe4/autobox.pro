@@ -562,7 +562,7 @@ if ( ! class_exists( 'Mega_Menu_Locations' ) ) :
 				<html>
 					<head>
 						<title>Sandbox: <?php echo $location; ?></title>
-						<style type='text/css'>
+						<style>
 							body, html {
 								margin: 0;
 								padding: 0;
