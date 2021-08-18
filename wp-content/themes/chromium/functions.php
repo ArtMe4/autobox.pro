@@ -457,13 +457,35 @@ function translate_text($translated) {
     return $translated;
 }
 
+
+add_filter( 'template_include', 'my_callback' );
+function my_callback( $original_template ) {
+    global $wp;
+    $url = home_url( $wp->request ) . '/';
+
+    if ($url !== strtolower($url)) {
+        global $wp_query;
+        $wp_query->set_404();
+        status_header( 404 );
+        get_template_part( 404 );
+
+        exit();
+    } else {
+        return $original_template;
+    }
+}
+
+
 // canonical для пагинации
 add_filter('wpseo_canonical', 'removeCanonicalArchivePagination');
 function removeCanonicalArchivePagination($link) {
     if (is_paged()) {
         return preg_replace('#\\??/page[\\/=]\\d+#', '', $link);
-    }
+    } /*else {
+        return $link;
+    }*/
 }
+
 
 add_filter('wpseo_title', 'addPageNumberOnTitle');
 function addPageNumberOnTitle($title) {
