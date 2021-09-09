@@ -2,7 +2,7 @@
 /**
  * Theme functions and definitions.
  */
-
+include 'domains.php';
 
 /* Set up the content width value based on the theme's design. */
 if ( !function_exists('chromium_content_width') ) {
@@ -392,7 +392,7 @@ function product_advantages() {
             <img width="64" height="64" src="/wp-content/uploads/2018/05/delivery-truck-2-64x64.png" alt="">
             <span>Доставка по РФ</span>
             <div class="single-label__popup">
-                Информация о доставке по <a href="/dostavka-i-oplata/">ссылке</a>
+                Информация о доставке по <a href="'. get_the_permalink(6045) .'">ссылке</a>
             </div>
         </div>
     </div>';
@@ -457,11 +457,381 @@ function translate_text($translated) {
     return $translated;
 }
 
+
+add_filter( 'template_include', 'my_callback' );
+function my_callback( $original_template ) {
+    global $wp;
+    $url = home_url( $wp->request ) . '/';
+
+    if ($url !== strtolower($url)) {
+        global $wp_query;
+        $wp_query->set_404();
+        status_header( 404 );
+        get_template_part( 404 );
+
+        exit();
+    } else {
+        return $original_template;
+    }
+}
+
+
 // canonical для пагинации
 add_filter('wpseo_canonical', 'removeCanonicalArchivePagination');
-
 function removeCanonicalArchivePagination($link) {
-    $link = preg_replace('#\\??/page[\\/=]\\d+#', '', $link);
-    $link = preg_replace('#\\??.tmweb#', '', $link);
-    return $link;
+    if (is_paged()) {
+        return preg_replace('#\\??/page[\\/=]\\d+#', '', $link);
+    } /*else {
+        return $link;
+    }*/
 }
+
+$GLOBALS['current_domain'] = '';
+$GLOBALS['current_domain_im'] = $domainIminitelniy = 'Омск';
+$GLOBALS['current_domain_d'] = $domainDatelniy = 'Омску';
+$GLOBALS['current_domain_r'] = $domainRoditelniy = 'Омска';
+$GLOBALS['current_domain_p]'] = $domainPredlozhniy= 'Омске';
+$GLOBALS['kladr_id'] = 55000001000;
+$GLOBALS['address'] = 'Омск, 644011, ул. 3 Енисейская 23а';
+
+$GLOBALS['domains'] = [
+    'Москва' => [
+        'im' => 'Москва',
+        'dp' => 'Москве',
+        'rp' => 'Москвы',
+        'pp' => 'Москве',
+        'domain' => 'moskva',
+        'kladr_id' => 77000000000,
+        'address' => 'Москва, Тверская, 9 ст7'
+    ],
+    'Санкт-Петербург' => [
+        'im' => 'Санкт-Петербург',
+        'dp' => 'Санкт-Петербургу',
+        'rp' => 'Санкт-Петербурга',
+        'pp' => 'Санкт-Петербурге',
+        'domain' => 'sankt-peterburg',
+        'kladr_id' => 78000000000,
+        'address' => 'Санкт-Петербург, Садовая, 38'
+    ],
+    'Омск' => [
+        'im' => 'Омск',
+        'dp' => 'Омску',
+        'rp' => 'Омска',
+        'pp' => 'Омске',
+        'domain' => '',
+        'kladr_id' => 55000001000,
+        'address' => 'Омск, 644011, ул. 3 Енисейская 23а'
+    ],
+    'Новосибирск' => [
+        'im' => 'Новосибирск',
+        'dp' => 'Новосибирску',
+        'rp' => 'Новосибирска',
+        'pp' => 'Новосибирске',
+        'domain' => 'novosibirsk',
+        'kladr_id' => 54000001000,
+        'address' => 'Новосибирск, Степная, 6'
+    ],
+    'Екатеринбург' => [
+        'im' => 'Екатеринбург',
+        'dp' => 'Екатеринбургу',
+        'rp' => 'Екатеринбурга',
+        'pp' => 'Екатеринбурге',
+        'domain' => 'ekaterinburg',
+        'kladr_id' => 66000001000,
+        'address' => 'Екатеринбург, Малышева, 29'
+    ],
+    'Нижний Новгород' => [
+        'im' => 'Нижний Новгород',
+        'dp' => 'Нижнему Новгороду',
+        'rp' => 'Нижнего Новгорода',
+        'pp' => 'Нижнем Новгороде',
+        'domain' => 'nizhnij-novgorod',
+        'kladr_id' => 52000001000,
+        'address' => 'Нижний Новгород, Фильченкова, 10'
+    ],
+    'Самара' => [
+        'im' => 'Самара',
+        'dp' => 'Самаре',
+        'rp' => 'Самары',
+        'pp' => 'Самаре',
+        'domain' => 'samara',
+        'kladr_id' => 63000001000,
+        'address' => 'Самара, Московское шоссе, 8'
+    ],
+    'Казань' => [
+        'im' => 'Казань',
+        'dp' => 'Казани',
+        'rp' => 'Казани',
+        'pp' => 'Казани',
+        'domain' => 'kazan',
+        'kladr_id' => 16000001000,
+        'address' => 'Казань, Петербургская, 40а'
+    ],
+    'Челябинск' => [
+        'im' => 'Челябинск',
+        'dp' => 'Челябинску',
+        'rp' => 'Челябинска',
+        'pp' => 'Челябинске',
+        'domain' => 'chelyabinsk',
+        'kladr_id' => 74000001000,
+        'address' => 'Челябинск, Энгельса, 63'
+    ],
+    'Ростов' => [
+        'im' => 'Ростов',
+        'dp' => 'Ростову',
+        'rp' => 'Ростова',
+        'pp' => 'Ростове',
+        'domain' => 'rostov',
+        'kladr_id' => 61000001000,
+        'address' => 'Ростов, Малюгиной, 232'
+    ],
+    'Уфа' => [
+        'im' => 'Уфа',
+        'dp' => 'Уфе',
+        'rp' => 'Уфы',
+        'pp' => 'Уфе',
+        'domain' => 'ufa',
+        'kladr_id' => '02000001000',
+        'address' => 'Уфа, Цюрупы, 124'
+    ],
+    'Волгоград' => [
+        'im' => 'Волгоград',
+        'dp' => 'Волгограду',
+        'rp' => 'Волгограда',
+        'pp' => 'Волгограде',
+        'domain' => 'volgograd',
+        'kladr_id' => 34000001000,
+        'address' => 'Волгоград, Елецкая, 10'
+    ],
+    'Пермь' => [
+        'im' => 'Пермь',
+        'dp' => 'Перми',
+        'rp' => 'Перми',
+        'pp' => 'Перми',
+        'domain' => 'perm',
+        'kladr_id' => 59000001000,
+        'address' => 'Пермь, Екатерининская, 61'
+    ],
+    'Красноярск' => [
+        'im' => 'Красноярск',
+        'dp' => 'Красноярску',
+        'rp' => 'Красноярска',
+        'pp' => 'Красноярске',
+        'domain' => 'krasnoyarsk',
+        'kladr_id' => 24000001000,
+        'address' => 'Красноярск, Карла Маркса, 95 к1'
+    ],
+    'Воронеж' => [
+        'im' => 'Воронеж',
+        'dp' => 'Воронежу',
+        'rp' => 'Воронежа',
+        'pp' => 'Воронеже',
+        'domain' => 'voronezh',
+        'kladr_id' => 36000001000,
+        'address' => 'Воронеж, проспект Революции, 30'
+    ],
+    'Саратов' => [
+        'im' => 'Саратов',
+        'dp' => 'Саратову',
+        'rp' => 'Саратова',
+        'pp' => 'Саратове',
+        'domain' => 'saratov',
+        'kladr_id' => 64000001000,
+        'address' => 'Саратов, Чернышевского, 105а'
+    ],
+    'Краснодар' => [
+        'im' => 'Краснодар',
+        'dp' => 'Краснодару',
+        'rp' => 'Краснодара',
+        'pp' => 'Краснодаре',
+        'domain' => 'krasnodar',
+        'kladr_id' => 23000001000,
+        'address' => 'Краснодар, Северная, 337'
+    ],
+    'Тольятти' => [
+        'im' => 'Тольятти',
+        'dp' => 'Тольятти',
+        'rp' => 'Тольятти',
+        'pp' => 'Тольятти',
+        'domain' => 'tolyatti',
+        'kladr_id' => 63000007000,
+        'address' => 'Тольятти, Дзержинского, 21'
+    ],
+    'Ижевск' => [
+        'im' => 'Ижевск',
+        'dp' => 'Ижевску',
+        'rp' => 'Ижевска',
+        'pp' => 'Ижевске',
+        'domain' => 'izhevsk',
+        'kladr_id' => 18000001000,
+        'address' => 'Ижевск, Пастухова, 11'
+    ],
+    'Ульяновск' => [
+        'im' => 'Ульяновск',
+        'dp' => 'Ульяновску',
+        'rp' => 'Ульяновска',
+        'pp' => 'Ульяновске',
+        'domain' => 'ulyanovsk',
+        'kladr_id' => 73000001000,
+        'address' => 'Ульяновск, Рябикова, 22а'
+    ],
+    'Барнаул' => [
+        'im' => 'Барнаул',
+        'dp' => 'Барнаулу',
+        'rp' => 'Барнаула',
+        'pp' => 'Барнауле',
+        'domain' => 'barnaul',
+        'kladr_id' => 22000001000,
+        'address' => 'Барнаул, Павловский тракт, 283а'
+    ],
+    'Владивосток' => [
+        'im' => 'Владивосток',
+        'dp' => 'Владивостоку',
+        'rp' => 'Владивостока',
+        'pp' => 'Владивостоке',
+        'domain' => 'vladivostok',
+        'kladr_id' => 25000001000,
+        'address' => 'Владивосток, Луговая, 63'
+    ],
+    'Ярославль' => [
+        'im' => 'Ярославль',
+        'dp' => 'Ярославлю',
+        'rp' => 'Ярославля',
+        'pp' => 'Ярославле',
+        'domain' => 'yaroslavl',
+        'kladr_id' => 76000001000,
+        'address' => 'Ярославль, Республиканская, 3 к2'
+    ],
+    'Иркутск' => [
+        'im' => 'Иркутск',
+        'dp' => 'Иркутску',
+        'rp' => 'Иркутска',
+        'pp' => 'Иркутске',
+        'domain' => 'irkutsk',
+        'kladr_id' => 38000003000,
+        'address' => 'Иркутск, Чехова, 19'
+    ],
+    'Тюмень' => [
+        'im' => 'Тюмень',
+        'dp' => 'Тюмени',
+        'rp' => 'Тюмени',
+        'pp' => 'Тюмени',
+        'domain' => 'tyumen',
+        'kladr_id' => 72000001000,
+        'address' => 'Тюмень, Мельникайте, 101'
+    ]
+];
+
+add_filter('wpseo_title', 'change_title');
+function change_title($title) {
+
+        foreach ($GLOBALS['domains'] as $domain) {
+            if(strpos($_SERVER['HTTP_HOST'], $domain['domain']) === false) {
+
+            } else {
+                $GLOBALS['current_domain'] = $domain['domain'];
+                $GLOBALS['current_domain_im'] = $domainIminitelniy = $domain['im'];
+                $GLOBALS['current_domain_d'] = $domainDatelniy = $domain['dp'];
+                $GLOBALS['current_domain_r'] = $domainRoditelniy = $domain['rp'];
+                $GLOBALS['current_domain_p]'] = $domainPredlozhniy= $domain['pp'];
+                $GLOBALS['kladr_id'] = $domain['kladr_id'];
+                $GLOBALS['address'] = $domain['address'];
+            }
+        }
+        $titleNew = $title;
+        if(strpos($title, 'Омске') !== false) {
+            $titleNew = str_replace('Омске', $GLOBALS['current_domain_p]'], $title);
+        } else if(strpos($title, 'Омск') !== false) {
+            $titleNew = str_replace('Омск', $GLOBALS['current_domain_im'], $title);
+        } else if(strpos($title, 'Омска') !== false) {
+            $titleNew = str_replace('Омска', $GLOBALS['current_domain_r'], $title);
+        } else if(strpos($title, 'Омску') !== false) {
+            $titleNew = str_replace('Омску', $GLOBALS['current_domain_d'], $title);
+        }
+
+    $title = $titleNew;
+    return $title;
+}
+
+add_filter('wpseo_title', 'addPageNumberOnTitle');
+function addPageNumberOnTitle($title) {
+    if (is_paged()) {
+        global $paged;
+        $title .= ' - Страница ' . $paged;
+    }
+
+    return $title;
+}
+add_shortcode( 'cartShow', 'cartShow_shortcode' );
+function cartShow_shortcode() {
+    if($GLOBALS['current_domain'] !== '') {
+        return "
+        <script type='text/javascript' src='https://widget.shiptor.ru/embed/widget-pvz.js'></script>
+        <div class='pvz-title'>Пункты выдачи заказов в ".$GLOBALS['current_domain_p]']."</div>
+        <div id='shiptor_widget_pvz' data-price='0' data-declaredCost='0' data-fixedDeliveryPrice='0' data-weight='0' data-cod='0' data-kladr-from='55000001000' data-dimensions='0' data-mode='inline' data-kladr='".$GLOBALS["kladr_id"]."' class='_shiptor_widget'></div>
+    ";
+    }
+}
+
+add_action( 'elementor/widget/render_content', function( $content, $widget ) {
+    if($GLOBALS['current_domain'] !== '') {
+        if ($widget->get_id() == '01e8704') {
+            $content = '';
+        }
+    }
+    return $content;
+}, 10, 2 );
+
+add_action( 'elementor/widget/render_content', function( $content, $widget ) {
+    if($GLOBALS['current_domain'] !== '') {
+        if ($widget->get_id() == 'af9d0ac') {
+            $content .= '<style type="text/css">#contacts-list .elementor-icon-list-item:nth-child(2){display: none;}</style>';
+        }
+    }
+    return $content;
+}, 10, 2 );
+
+
+add_action( 'elementor/widget/render_content', function( $content, $widget ) {
+    if($widget->get_id() == 'a70bb53') {
+        $title = $widget->get_settings();
+        $title['title'] = $GLOBALS['address'];
+        $content = '<h4 class="elementor-heading-title elementor-size-default">'.$title['title'].'</h4>';
+    }
+    return $content;
+}, 10, 2 );
+//if($_REQUEST['k'] == 'y') {
+//    add_action( 'elementor/widget/render_content', function( $content, $widget ) {
+//        if(strpos($content, 'Омске') !== false) {
+//            $newcontent = str_replace('Омске', $GLOBALS['current_domain_p]'], $content);
+//        } else if(strpos($content, 'Омск') !== false) {
+//            $newcontent = str_replace('Омск', $GLOBALS['current_domain_im'], $content);
+//        } else if(strpos($content, 'Омска') !== false) {
+//            $newcontent = str_replace('Омска', $GLOBALS['current_domain_r'], $content);
+//        } else if(strpos($content, 'Омску') !== false) {
+//            $newcontent = str_replace('Омску', $GLOBALS['current_domain_d'], $content);
+//        }
+//        return $newcontent;
+//    }, 10, 2 );
+//}
+function foobar_shortcode( $atts ){
+    return 'Привет! Я шорткод.';
+}
+
+class iWC_Orderby_Stock_Status {
+    public function __construct() {
+        if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
+            add_filter('posts_clauses', array($this, 'order_by_stock_status'), 2000);
+        }
+    }
+    public function order_by_stock_status($posts_clauses) {
+        global $wpdb;
+        if (is_woocommerce() && (is_shop() || is_product_category() || is_product_tag())) {
+            $posts_clauses['join'] .= " INNER JOIN $wpdb->postmeta istockstatus ON ($wpdb->posts.ID = istockstatus.post_id) ";
+            $posts_clauses['orderby'] = " istockstatus.meta_value ASC, " . $posts_clauses['orderby'];
+            $posts_clauses['where'] = " AND istockstatus.meta_key = '_stock_status' AND istockstatus.meta_value <> '' " . $posts_clauses['where'];
+        }
+        return $posts_clauses;
+    }
+}
+new iWC_Orderby_Stock_Status;
