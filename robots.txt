@@ -7,6 +7,16 @@ Disallow: /wp-register.php
 Disallow: */embed
 Disallow: /cgi-bin
 Disallow: *?s=
+Disallow: */?
+Disallow: */__trashed/
+Disallow: /shop/
+Disallow: */feed/
+Disallow: /compare/
+Disallow: /wishlist/
+Disallow: /category/uncategorized/
+Disallow: /author/
+Disallow: /my-account/
+Disallow: /cart/
 Allow: /wp-admin/admin-ajax.php
 
 User-agent: Yandex
@@ -18,7 +28,18 @@ Disallow: /wp-register.php
 Disallow: */embed
 Disallow: /cgi-bin
 Disallow: *?s=
+Disallow: */?
+Disallow: */__trashed/
+Disallow: /shop/
+Disallow: */feed/
+Disallow: /compare/
+Disallow: /wishlist/
+Disallow: /category/uncategorized/
+Disallow: /author/
+Disallow: /my-account/
+Disallow: /cart/
 Allow: /wp-admin/admin-ajax.php
+Host:https://basszone.ru/
 
 User-agent: Googlebot
 Disallow: /wp-admin
@@ -29,5 +50,17 @@ Disallow: /wp-register.php
 Disallow: */embed
 Disallow: /cgi-bin
 Disallow: *?s=
+Disallow: */?
+Disallow: */__trashed/
+Disallow: /shop/
+Disallow: */feed/
+Disallow: /compare/
+Disallow: /wishlist/
+Disallow: /category/uncategorized/
+Disallow: /author/
+Disallow: /my-account/
+Disallow: /cart/
 Allow: /wp-admin/admin-ajax.php
+Sitemap: https://basszone.ru/sitemap.xml
+
 
