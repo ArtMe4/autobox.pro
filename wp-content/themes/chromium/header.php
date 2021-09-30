@@ -10,8 +10,7 @@
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
         <meta id="mvp" name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
         <script>function v(){let e=screen.width<=360?"width=360,user-scalable=no":"width=device-width,initial-scale=1,maximum-scale=1";document.getElementById("mvp").setAttribute("content",e)}v();window.onresize=function(n){v()}</script>
-        <meta name="cmsmagazine" content="4be1bfa70b3d4b0b650c5469488496b4" />
-		<link rel="profile" href="https://gmpg.org/xfn/11">
+        <link rel="profile" href="https://gmpg.org/xfn/11">
 		<link rel="icon" href="/favicon.png" type="image/x-icon">
 		<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
@@ -27,6 +26,8 @@
 
             gtag('config', 'UA-153981354-2');
         </script>
+        <meta name="cmsmagazine" content="4be1bfa70b3d4b0b650c5469488496b4" />
+        <meta name="yandex-verification" content="7ca37235c8ed3262" />
 	</head>
 
 	<body <?php body_class(); ?>>
